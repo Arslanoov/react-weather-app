@@ -1,0 +1,17 @@
+{
+  "name": "react-weather",
+  "version": "1.0.0",
+  "license": "ISC",
+  "author": "Arslanoov",
+  "description": "Weather app (React + Redux)",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Arslanoov/react-weather.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Arslanoov/react-weather/issues"
+  }
+}
