@@ -10,7 +10,7 @@ interface Props {
 const HomePage: React.FunctionComponent<Props> = ({ test }: Props) => {
   return (
     <>
-      <p>Home page</p>
+      <p className='title'>Home page</p>
       <p>{test}</p>
     </>
   )

@@ -1,5 +1,7 @@
+@import "core/variables";
+
 .main {
   .title {
-    color: blueviolet;
+    color: $title-color;
   }
 }
