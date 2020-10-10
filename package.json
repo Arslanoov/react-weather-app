@@ -5,6 +5,7 @@
   "author": "Arslanoov",
   "description": "Weather app (React + Redux)",
   "scripts": {
+    "start": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -13,5 +14,9 @@
   },
   "bugs": {
     "url": "https://github.com/Arslanoov/react-weather/issues"
+  },
+  "dependencies": {
+    "webpack": "^4.44.2",
+    "webpack-cli": "^3.3.12"
   }
 }
