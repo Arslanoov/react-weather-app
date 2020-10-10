@@ -1,6 +1,11 @@
-export default {
+const initialState: any = {
   weather: {
-    data: [],
+    city: {
+      name: '',
+      data: []
+    },
     test: 'test string'
   }
-}
+};
+
+export default initialState;

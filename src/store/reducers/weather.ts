@@ -1,11 +1,17 @@
 import {
-  GET_WEATHER,
+  GET_WEATHER_BY_CITY_LOADED,
+  GET_WEATHER_BY_CITY_REQUESTED,
   WeatherActionTypes
 } from "../actions/types/weather";
-import { WeatherState } from "./types/weather";
+
+import {WeatherState} from "./types/weather";
 
 const initialState: WeatherState = {
-  data: []
+  city: {
+    loading: false,
+    name: '',
+    data: null
+  }
 };
 
 export function weatherReducer(
@@ -13,9 +19,24 @@ export function weatherReducer(
   action: WeatherActionTypes
 ): WeatherState {
   switch (action.type) {
-    case GET_WEATHER:
+    case GET_WEATHER_BY_CITY_REQUESTED:
       return {
-        data: []
+        ...state,
+        city: {
+          ...state.city,
+          name: action.payload,
+          loading: true
+        }
+      };
+
+    case GET_WEATHER_BY_CITY_LOADED:
+      return {
+        ...state,
+        city: {
+          ...state.city,
+          data: action.payload,
+          loading: false
+        }
       };
 
     default:

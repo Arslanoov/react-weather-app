@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
-import './app.scss';
-
 import HomePage from "./common/pages/HomePage";
 import NotFoundPage from "./common/pages/NotFoundPage";
+import WeatherByCityPage from "./weather/pages/WeatherByCityPage";
+
+import './app.scss';
 
 const App: React.FunctionComponent = () => {
   return (
@@ -12,6 +13,12 @@ const App: React.FunctionComponent = () => {
       <Route
         path='/'
         component={HomePage}
+        exact
+      />
+
+      <Route
+        path='/weather'
+        component={WeatherByCityPage}
         exact
       />
 
