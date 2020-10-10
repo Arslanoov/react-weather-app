@@ -1,10 +1,11 @@
 import * as React from 'react';
 
 import './app.scss';
+import HomePage from "./common/pages/HomePage";
 
 const App: React.FunctionComponent = () => {
   return (
-    <h1 className='title'>Hello, world!</h1>
+    <HomePage />
   )
 };
 
