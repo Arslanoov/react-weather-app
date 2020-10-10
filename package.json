@@ -7,7 +7,7 @@
   "scripts": {
     "start": "webpack-dev-server",
     "build": "webpack",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -19,15 +19,22 @@
   "devDependencies": {
     "@babel/cli": "^7.11.6",
     "@babel/core": "^7.11.6",
+    "@babel/plugin-transform-modules-commonjs": "^7.10.4",
     "@babel/preset-env": "^7.11.5",
     "@babel/preset-react": "^7.10.4",
     "@babel/preset-typescript": "^7.10.4",
+    "@types/jest": "^26.0.14",
     "@types/react-dom": "^16.9.8",
+    "@types/react-test-renderer": "^16.9.3",
+    "babel-jest": "^26.5.2",
     "babel-loader": "^8.1.0",
     "css-loader": "^4.3.0",
     "file-loader": "^6.1.1",
     "html-webpack-plugin": "^4.5.0",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^26.5.2",
     "node-sass": "^4.14.1",
+    "react-test-renderer": "^16.13.1",
     "sass-loader": "^10.0.3",
     "source-map-loader": "^1.1.1",
     "style-loader": "^2.0.0",
