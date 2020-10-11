@@ -21,6 +21,10 @@ module.exports = () => {
       extensions: [".js", ".jsx", ".ts", ".tsx", ".css", ".scss", ".sass"],
     },
 
+    output: {
+      publicPath: 'http://localhost:8080/'
+    },
+
     module: {
       rules: [
         {

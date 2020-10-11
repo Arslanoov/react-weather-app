@@ -59,6 +59,6 @@ export default class DummyNoteService {
   }
 
   removeNote(id: string): void {
-    this.data.filter((note) => note.id !== id);
+    this.data = this.data.filter((note) => note.id !== id);
   }
 }

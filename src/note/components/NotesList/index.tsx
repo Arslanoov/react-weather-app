@@ -21,7 +21,8 @@ const NotesList: React.FunctionComponent<Props> = ({ notes }: Props) => {
             <Card.Text>
               {note.description.slice(0, 20)}...
             </Card.Text>
-            <Button as={Link} to={`/${note.id}`} variant="primary">View</Button>
+
+            <Button as={Link} to={`/note/${note.id}`} variant="primary">View</Button>
           </Card.Body>
         </Card>
       ))}

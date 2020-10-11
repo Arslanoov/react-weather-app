@@ -38,9 +38,11 @@ const App: React.FunctionComponent = () => {
       />
 
       <Route
-        path='/:id'
-        component={ShowPage}
-        exact
+        path='/note/:id'
+        render={({ match }) => {
+          const { id } = match.params;
+          return <ShowPage id={id} />
+        }}
       />
 
       <Route
