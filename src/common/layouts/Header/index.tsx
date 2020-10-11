@@ -12,7 +12,7 @@ const Header: React.FunctionComponent = () => {
     <>
       <header className='header'>
         <Navbar>
-          <Navbar.Brand href="#home">
+          <Navbar.Brand as={NavLink} to="/" exact>
             <img
               alt=""
               src={logo}
