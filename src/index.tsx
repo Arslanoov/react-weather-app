@@ -9,18 +9,21 @@ import { WeatherServiceProvider } from './weather/contexts/WeatherServiceContext
 import WeatherService from "./weather/services/weatherService";
 
 import App from './App';
+import ErrorBoundary from './common/components/ErrorBoundary';
 
 const weatherService = new WeatherService();
 
 ReactDOM.render(
   <Provider store={store}>
-    <WeatherServiceProvider value={weatherService}>
-      <Router>
-        <main className='main'>
-          <App />
-        </main>
-      </Router>
-    </WeatherServiceProvider>
+    <ErrorBoundary>
+      <WeatherServiceProvider value={weatherService}>
+        <Router>
+          <main className='main'>
+            <App />
+          </main>
+        </Router>
+      </WeatherServiceProvider>
+    </ErrorBoundary>
   </Provider>,
   document.getElementById('root')
 );
