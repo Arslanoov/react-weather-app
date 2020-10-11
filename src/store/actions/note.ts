@@ -1,4 +1,5 @@
 import {
+  ADD_NOTE,
   FETCH_NOTES,
   NoteActionTypes
 } from './types/note';
@@ -13,11 +14,28 @@ const fetchNotes = (list: Array<any>) => {
   }
 };
 
+const addNoteRequest = (note: any) => {
+  return {
+    type: ADD_NOTE,
+    payload: note
+  }
+};
+
 const getNotes = (noteService: DummyNoteService) => () => (dispatch: Dispatch) => {
   const list = noteService.getNotes();
   dispatch(fetchNotes(list));
 };
 
+const addNote = (noteService: DummyNoteService, title: string, description: string) => () => (dispatch: Dispatch) => {
+  const id = noteService.addNote(title, description);
+  dispatch(addNoteRequest({
+    id,
+    title,
+    description
+  }));
+};
+
 export {
-  getNotes
+  getNotes,
+  addNote
 };

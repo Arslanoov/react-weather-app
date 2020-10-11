@@ -5,6 +5,10 @@ body {
 .main {
   a {
     color: $project-theme-color;
+
+    &.btn {
+      color: white;
+    }
   }
 
   .content {
