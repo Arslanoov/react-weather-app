@@ -4,6 +4,7 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import HomePage from "./common/pages/HomePage";
 import NotFoundPage from "./common/pages/NotFoundPage";
 import WeatherByCityPage from "./weather/pages/WeatherByCityPage";
+import IndexPage from './note/pages/IndexPage';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -19,6 +20,12 @@ const App: React.FunctionComponent = () => {
       <Route
         path='/weather'
         component={WeatherByCityPage}
+        exact
+      />
+
+      <Route
+        path='/notes'
+        component={IndexPage}
         exact
       />
 

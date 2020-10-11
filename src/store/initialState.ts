@@ -7,6 +7,9 @@ const initialState: any = {
       now: [],
       forecast: []
     }
+  },
+  note: {
+    list: []
   }
 };
 
