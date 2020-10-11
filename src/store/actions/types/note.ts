@@ -1,5 +1,6 @@
 export const FETCH_NOTES = 'GET_NOTES';
 export const ADD_NOTE = 'ADD_NOTE';
+export const REMOVE_NOTE = 'REMOVE_NOTE';
 
 interface GetNotesAction {
   type: typeof FETCH_NOTES,
@@ -11,4 +12,9 @@ interface AddNoteAction {
   payload: any
 }
 
-export type NoteActionTypes = GetNotesAction | AddNoteAction;
+interface RemoveNoteAction {
+  type: typeof REMOVE_NOTE,
+  payload: string
+}
+
+export type NoteActionTypes = GetNotesAction | AddNoteAction | RemoveNoteAction;

@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators, compose, Dispatch } from 'redux';
 
@@ -8,9 +8,9 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
 import NoteLayout from '../layouts/NoteLayout';
-import DummyNoteService from '../services/dummyNoteService';
 import { addNote } from '../../store/actions/note';
 import withNoteService from '../hoc/withNoteService';
+import DummyNoteService from '../services/dummyNoteService';
 
 const CreatePage: React.FunctionComponent = ({ addNote, history }: any) => {
   const [ title, setTitle ] = React.useState('');
