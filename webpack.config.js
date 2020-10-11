@@ -65,7 +65,18 @@ module.exports = () => {
         // Loading SASS/SCSS
         {
           test: /\.(s[ca]ss)$/,
-          use: [ MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader' ]
+          use: [
+            MiniCssExtractPlugin.loader,
+            'css-loader',
+            'sass-loader',
+
+            {
+              loader: 'sass-resources-loader',
+              options: {
+                resources: ['./src/core/variables.scss']
+              }
+            }
+          ]
         }
       ]
     },
