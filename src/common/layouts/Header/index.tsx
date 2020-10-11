@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
@@ -26,20 +26,20 @@ const Header: React.FunctionComponent = () => {
           <Nav
             activeKey="/"
           >
-            <Nav.Item href="/">
-              <Nav.Link as={Link} to="/" >
+            <Nav.Item>
+              <Nav.Link as={NavLink} activeClassName='active' to="/" exact>
                 Home
               </Nav.Link>
             </Nav.Item>
 
-            <Nav.Item href="/">
-              <Nav.Link as={Link} to="/weather" >
+            <Nav.Item>
+              <Nav.Link as={NavLink} activeClassName='active' to="/weather" exact>
                 Weather
               </Nav.Link>
             </Nav.Item>
 
-            <Nav.Item href="/">
-              <Nav.Link as={Link} to="/404" >
+            <Nav.Item>
+              <Nav.Link as={NavLink} activeClassName='active' to="/404" exact>
                 404
               </Nav.Link>
             </Nav.Item>
