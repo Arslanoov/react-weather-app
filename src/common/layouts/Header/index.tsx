@@ -39,6 +39,12 @@ const Header: React.FunctionComponent = () => {
             </Nav.Item>
 
             <Nav.Item>
+              <Nav.Link as={NavLink} activeClassName='active' to="/notes" exact>
+                Notes
+              </Nav.Link>
+            </Nav.Item>
+
+            <Nav.Item>
               <Nav.Link as={NavLink} activeClassName='active' to="/404" exact>
                 404
               </Nav.Link>

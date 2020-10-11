@@ -10,7 +10,7 @@ import { getWeatherByCity, clearWeatherAndForecastData } from "../../store/actio
 
 import Loader from "../../common/components/Loader";
 import WeatherService from "../services/weatherService";
-import withBookstoreService from "../hoc/withWeatherService";
+import withWeatherService from "../hoc/withWeatherService";
 import WeatherData from "../components/WeatherData";
 import ForecastTable from '../components/ForecastTable';
 
@@ -97,6 +97,6 @@ const mapDispatchToProps = (dispatch: Dispatch, { weatherService}: {weatherServi
 };
 
 export default compose(
-  withBookstoreService(),
+  withWeatherService(),
   connect(mapStateToProps, mapDispatchToProps)
 )(WeatherByCityPage);

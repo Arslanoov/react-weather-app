@@ -2,14 +2,14 @@ import * as React from 'react';
 
 import { WeatherServiceConsumer } from '../contexts/WeatherServiceContext';
 
-const withBookstoreService = () => (Wrapped: any) => {
+const withWeatherService = () => (Wrapped: any) => {
   return (props: any) => {
     return (
       <WeatherServiceConsumer>
         {
-          (weatherService) => {
+          (weatherServiceInstance) => {
             return (<Wrapped {...props}
-             weatherService={weatherService} />);
+             weatherService={weatherServiceInstance} />);
           }
         }
       </WeatherServiceConsumer>
@@ -17,4 +17,4 @@ const withBookstoreService = () => (Wrapped: any) => {
   }
 };
 
-export default withBookstoreService;
+export default withWeatherService;
