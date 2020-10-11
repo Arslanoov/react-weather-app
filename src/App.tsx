@@ -5,6 +5,8 @@ import HomePage from "./common/pages/HomePage";
 import NotFoundPage from "./common/pages/NotFoundPage";
 import WeatherByCityPage from "./weather/pages/WeatherByCityPage";
 import IndexPage from './note/pages/IndexPage';
+import CreatePage from './note/pages/CreatePage';
+import ShowPage from './note/pages/ShowPage';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -26,6 +28,18 @@ const App: React.FunctionComponent = () => {
       <Route
         path='/notes'
         component={IndexPage}
+        exact
+      />
+
+      <Route
+        path='/create'
+        component={CreatePage}
+        exact
+      />
+
+      <Route
+        path='/:id'
+        component={ShowPage}
         exact
       />
 

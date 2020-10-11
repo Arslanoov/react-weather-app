@@ -1,5 +1,6 @@
 import {
   FETCH_NOTES,
+  ADD_NOTE,
   NoteActionTypes
 } from '../actions/types/note';
 
@@ -16,6 +17,15 @@ export function noteReducer(
       return {
         ...state,
         list: action.payload
+      };
+
+    case ADD_NOTE:
+      return {
+        ...state,
+        list: [
+          ...state.list,
+          action.payload
+        ]
       };
 
     default:

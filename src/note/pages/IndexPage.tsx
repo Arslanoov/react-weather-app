@@ -1,7 +1,10 @@
 import * as React from 'react';
 
+import { Link } from 'react-router-dom';
 import { bindActionCreators, compose, Dispatch } from 'redux';
 import { connect } from 'react-redux';
+
+import Button from 'react-bootstrap/Button';
 
 import NoteLayout from '../layouts/NoteLayout';
 import { getNotes } from '../../store/actions/note';
@@ -22,6 +25,11 @@ const IndexPage = ({ getNotes, list }: Props) => {
   return (
     <NoteLayout>
       <h3 className='text-center'>Notes</h3>
+
+      <div className="row">
+        <Button as={Link} className='mx-auto' variant="success" to='/create'>Add note</Button>
+      </div>
+
       <NotesList notes={list} />
     </NoteLayout>
   )
