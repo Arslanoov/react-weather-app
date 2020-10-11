@@ -1,7 +1,15 @@
 @import "core/variables";
 
+body {
+  overflow-x: hidden;
+}
+
 .main {
-  .title {
-    color: $title-color;
+  a {
+    color: $project-theme-color;
+  }
+
+  .content {
+    padding-bottom: 50px;
   }
 }

@@ -1,36 +1,19 @@
 import * as React from 'react';
 
-import { Link } from "react-router-dom";
+import Header from "../Header";
+import Footer from '../Footer';
 
 const MainLayout: React.FunctionComponent = ({ children }) => {
   return (
-    <>
-      <header className='header'>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/weather">Weather</Link>
-            </li>
-            <li>
-              <Link to="/404">404</Link>
-            </li>
-          </ul>
-        </nav>
-      </header>
+    <div className='container'>
+      <Header />
 
-      <main className='main'>
+      <div className="content">
         {children}
-      </main>
+      </div>
 
-      <footer className='footer'>
-        <hr/>
-        <p>Footer</p>
-        <p>All right reserved</p>
-      </footer>
-    </>
+      <Footer />
+    </div>
   )
 };
 

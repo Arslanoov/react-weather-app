@@ -1,18 +1,8 @@
 export const GET_WEATHER_BY_CITY_REQUESTED = 'GET_WEATHER_BY_CITY_REQUESTED';
 export const GET_WEATHER_BY_CITY_LOADED = 'GET_WEATHER_BY_CITY_LOADED';
-
-interface GetWeatherByCityLoadedPayload {
-  loading: boolean,
-  name: string,
-  data: {
-    main: string,
-    description: string,
-    icon: string,
-    temp: string,
-    windSpeed: string,
-    clouds: string
-  }
-}
+export const GET_DAILY_FORECAST_BY_CITY_REQUESTED = 'GET_DAILY_FORECAST_BY_CITY_REQUESTED';
+export const GET_DAILY_FORECAST_BY_CITY_LOADED = 'GET_DAILY_FORECAST_BY_CITY_LOADED';
+export const CLEAR_WEATHER_AND_FORECAST_DATA = 'CLEAR_WEATHER_AND_FORECAST_DATA';
 
 interface GetWeatherByCityRequestedAction {
   type: typeof GET_WEATHER_BY_CITY_REQUESTED,
@@ -21,7 +11,27 @@ interface GetWeatherByCityRequestedAction {
 
 interface GetWeatherByCityLoadedAction {
   type: typeof GET_WEATHER_BY_CITY_LOADED,
-  payload: GetWeatherByCityLoadedPayload
+  payload: any
 }
 
-export type WeatherActionTypes = GetWeatherByCityRequestedAction | GetWeatherByCityLoadedAction;
+interface GetDailyForecastByCityRequestedAction {
+  type: typeof GET_DAILY_FORECAST_BY_CITY_REQUESTED
+}
+
+interface GetDailyForecastByCityLoadedAction {
+  type: typeof GET_DAILY_FORECAST_BY_CITY_LOADED,
+  payload: any
+}
+
+interface ClearWeatherAndForecastData {
+  type: typeof CLEAR_WEATHER_AND_FORECAST_DATA,
+  payload: any
+}
+
+export type WeatherActionTypes =
+  GetWeatherByCityRequestedAction |
+  GetWeatherByCityLoadedAction |
+  GetDailyForecastByCityRequestedAction |
+  GetDailyForecastByCityLoadedAction |
+  ClearWeatherAndForecastData
+;

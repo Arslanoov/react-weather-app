@@ -1,23 +1,26 @@
 import {
-  GET_WEATHER_BY_CITY_LOADED,
   GET_WEATHER_BY_CITY_REQUESTED,
+  GET_WEATHER_BY_CITY_LOADED,
+  GET_DAILY_FORECAST_BY_CITY_REQUESTED,
+  GET_DAILY_FORECAST_BY_CITY_LOADED,
+  CLEAR_WEATHER_AND_FORECAST_DATA,
   WeatherActionTypes
 } from "../actions/types/weather";
 
-import {WeatherState} from "./types/weather";
-
-const initialState: WeatherState = {
+const initialState: any = {
   city: {
-    loading: false,
+    loadingWeather: false,
+    loadingForecast: false,
     name: '',
-    data: null
+    weather: null,
+    forecast: null
   }
 };
 
 export function weatherReducer(
-  state: WeatherState = initialState,
+  state: any = initialState,
   action: WeatherActionTypes
-): WeatherState {
+): any {
   switch (action.type) {
     case GET_WEATHER_BY_CITY_REQUESTED:
       return {
@@ -25,7 +28,7 @@ export function weatherReducer(
         city: {
           ...state.city,
           name: action.payload,
-          loading: true
+          loadingWeather: true
         }
       };
 
@@ -34,8 +37,37 @@ export function weatherReducer(
         ...state,
         city: {
           ...state.city,
-          data: action.payload,
-          loading: false
+          weather: action.payload,
+          loadingWeather: false
+        }
+      };
+
+    case GET_DAILY_FORECAST_BY_CITY_REQUESTED:
+      return {
+        ...state,
+        city: {
+          ...state.city,
+          loadingForecast: true
+        }
+      };
+
+    case GET_DAILY_FORECAST_BY_CITY_LOADED:
+      return {
+        ...state,
+        city: {
+          ...state.city,
+          loadingForecast: false,
+          forecast: action.payload
+        }
+      };
+
+    case CLEAR_WEATHER_AND_FORECAST_DATA:
+      return {
+        ...state,
+        city: {
+          ...state.city,
+          weather: null,
+          forecast: null
         }
       };
 

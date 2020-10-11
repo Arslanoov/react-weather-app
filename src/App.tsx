@@ -5,6 +5,7 @@ import HomePage from "./common/pages/HomePage";
 import NotFoundPage from "./common/pages/NotFoundPage";
 import WeatherByCityPage from "./weather/pages/WeatherByCityPage";
 
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './app.scss';
 
 const App: React.FunctionComponent = () => {

@@ -3,33 +3,70 @@ import * as React from 'react';
 import { bindActionCreators, compose, Dispatch } from 'redux';
 import { connect } from "react-redux";
 
+import Form from 'react-bootstrap/Form';
+
 import WeatherLayout from '../layouts/WeatherLayout';
-import { getWeatherByCity } from "../../store/actions/weather";
+import { getWeatherByCity, clearWeatherAndForecastData } from "../../store/actions/weather";
 
 import Loader from "../../common/components/Loader";
 import WeatherService from "../services/weatherService";
 import withBookstoreService from "../hoc/withWeatherService";
 import WeatherData from "../components/WeatherData";
+import ForecastTable from '../components/ForecastTable';
 
 interface Props {
   getWeather: Function,
-  loading: boolean,
+  clearWeatherAndForecastData: React.EffectCallback,
+  loadingWeather: boolean,
+  loadingForecast: boolean,
   name: string,
-  data: any
+  weather: any,
+  forecast: any,
 }
 
-const WeatherByCityPage: React.FunctionComponent<Props> = ({ getWeather, loading, name, data }: Props) => {
+const WeatherByCityPage: React.FunctionComponent<Props> = ({
+    getWeather, clearWeatherAndForecastData, loadingWeather, loadingForecast, name, weather, forecast
+  }: Props
+) => {
+  const [ city, setCity ] = React.useState(name ?? 'Moscow');
+
   React.useEffect(() => {
-    getWeather('Moscow');
+    getWeather(name);
+    return clearWeatherAndForecastData;
   }, []);
+
+  const onCityChange = (e: any) => {
+    setCity(e.target.value);
+  };
+
+  const onCitySubmit = (e: any) => {
+    e.preventDefault();
+    if (city !== name) {
+      getWeather(city);
+    }
+  };
+
+  const loader = (
+    <div className='text-center'>
+      <Loader />
+    </div>
+  );
 
   return (
     <WeatherLayout>
-      <p>Weather page</p>
-      {loading ? <Loader /> : (
+      <Form onSubmit={onCitySubmit}>
+        <Form.Group className='col-sm-5 mx-auto'>
+          <h3 className='text-center'>City: {name}</h3>
+          <Form.Control type="text" value={city} onChange={onCityChange} />
+        </Form.Group>
+      </Form>
+
+      {loadingWeather || !weather ? loader : (
         <>
-          <p>City: {name}</p>
-          <WeatherData weather={data} />
+          <WeatherData weather={weather} />
+          { loadingForecast || !forecast ? loader : (
+            <ForecastTable forecast={forecast} />
+          )}
         </>
       )}
     </WeatherLayout>
@@ -39,20 +76,23 @@ const WeatherByCityPage: React.FunctionComponent<Props> = ({ getWeather, loading
 interface StateProps {
   weather: {
     city: {
-      loading: boolean,
+      loadingWeather: boolean,
+      loadingForecast: boolean,
       name: string,
-      data: any
+      weather: any,
+      forecast: any,
     }
   }
 }
 
-const mapStateToProps = ({ weather: { city: { loading, name, data } } }: StateProps) => {
-  return { loading, name, data };
+const mapStateToProps = ({ weather: { city: { loadingWeather, loadingForecast, name, weather, forecast } } }: StateProps) => {
+  return { loadingWeather, loadingForecast, name, weather, forecast };
 };
 
 const mapDispatchToProps = (dispatch: Dispatch, { weatherService}: {weatherService: WeatherService}) => {
   return bindActionCreators({
-    getWeather: (cityName) => getWeatherByCity(weatherService, cityName)()
+    getWeather: (cityName) => getWeatherByCity(weatherService, cityName)(),
+    clearWeatherAndForecastData: clearWeatherAndForecastData
   }, dispatch);
 };
 
