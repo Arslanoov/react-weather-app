@@ -1,10 +1,12 @@
 const initialState: any = {
   weather: {
     city: {
-      name: '',
-      data: []
-    },
-    test: 'test string'
+      loadingWeather: false,
+      loadingForecast: false,
+      name: 'Moscow',
+      now: [],
+      forecast: []
+    }
   }
 };
 

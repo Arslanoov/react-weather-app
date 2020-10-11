@@ -1,8 +1,10 @@
 import * as React from 'react';
 
+import Spinner from 'react-bootstrap/Spinner';
+
 const Loader: React.FunctionComponent = () => {
   return (
-    <div>Loading...</div>
+    <Spinner animation="border" />
   )
 };
 
