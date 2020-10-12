@@ -10,15 +10,15 @@ import { Editor } from '@tinymce/tinymce-react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
+import NoteServiceInterface, { Note } from '../../services/noteService';
 import NoteLayout from '../../layouts/NoteLayout';
 import { updateNote } from '../../../store/actions/note';
 import withNoteService from '../../hoc/withNoteService';
-import DummyNoteService from '../../services/dummyNoteService';
 
 import './index.scss';
 
 const UpdatePage: React.FunctionComponent = ({ history, list, id, updateNote }: any) => {
-  const idx: number = list.findIndex((note: any) => note.id === id);
+  const idx: number = list.findIndex((note: Note) => note.id === id);
   const note = list[idx];
   if (!note) {
     return <Redirect to='/notes'/>;
@@ -95,7 +95,7 @@ const mapStateToProps = ({ note: { list } }: StateProps) => {
   return { list };
 };
 
-const mapDispatchToProps = (dispatch: Dispatch, { noteService }: { noteService: DummyNoteService }) => {
+const mapDispatchToProps = (dispatch: Dispatch, { noteService }: { noteService: NoteServiceInterface }) => {
   return bindActionCreators({
     updateNote: (id: string, title: string, description: string) => updateNote(noteService, {
       id,

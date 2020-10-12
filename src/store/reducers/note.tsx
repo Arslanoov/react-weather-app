@@ -1,4 +1,5 @@
 import {ADD_NOTE, FETCH_NOTES, NoteActionTypes, REMOVE_NOTE, UPDATE_NOTE} from '../actions/types/note';
+import { Note } from '../../note/services/noteService';
 
 const initialState: any = {
   list: []
@@ -25,7 +26,7 @@ export function noteReducer(
       };
 
     case UPDATE_NOTE:
-      const updateItemIdx: number = state.list.findIndex((note: any) => note.id === action.payload.id);
+      const updateItemIdx: number = state.list.findIndex((note: Note) => note.id === action.payload.id);
       const updateItem = state.list[updateItemIdx];
 
       const newItem = {
@@ -44,7 +45,7 @@ export function noteReducer(
       };
 
     case REMOVE_NOTE:
-      const idx: number = state.list.findIndex((note: any) => note.id === action.payload);
+      const idx: number = state.list.findIndex((note: Note) => note.id === action.payload);
 
       return {
         ...state,
