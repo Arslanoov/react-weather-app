@@ -1,7 +1,8 @@
 import {
   ADD_NOTE,
   FETCH_NOTES,
-  NoteActionTypes, REMOVE_NOTE
+  UPDATE_NOTE,
+  REMOVE_NOTE
 } from './types/note';
 
 import DummyNoteService from '../../note/services/dummyNoteService';
@@ -18,6 +19,17 @@ const addNoteRequest = (note: any) => {
   return {
     type: ADD_NOTE,
     payload: note
+  }
+};
+
+const updateNoteRequest = (id: string, title: string, description: string) => {
+  return {
+    type: UPDATE_NOTE,
+    payload: {
+      id,
+      title,
+      description
+    }
   }
 };
 
@@ -42,6 +54,11 @@ const addNote = (noteService: DummyNoteService, title: string, description: stri
   }));
 };
 
+const updateNote = (noteService: DummyNoteService, note: any) => () => (dispatch: Dispatch) => {
+  noteService.updateNote(note.id, note.title, note.description);
+  dispatch(updateNoteRequest(note.id, note.title, note.description));
+};
+
 const removeNote = (noteService: DummyNoteService, id: string) => () => (dispatch: Dispatch) => {
   noteService.removeNote(id);
   dispatch(removeNoteRequest(id));
@@ -50,5 +67,6 @@ const removeNote = (noteService: DummyNoteService, id: string) => () => (dispatc
 export {
   getNotes,
   addNote,
+  updateNote,
   removeNote
 };

@@ -34,7 +34,7 @@ const CreatePage: React.FunctionComponent = ({ addNote, history }: any) => {
     <NoteLayout>
       <h3>Create page</h3>
       <p>
-        <Button variant='primary'  to='/notes' as={Link} style={{color: 'white'}}>
+        <Button variant='primary'  to='/notes' as={Link}>
           Back to list
         </Button>
       </p>

@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Link, Redirect } from 'react-router-dom';
+import { withRouter, Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators, compose, Dispatch } from 'redux';
 
@@ -10,18 +10,18 @@ import NoteLayout from '../layouts/NoteLayout';
 import withNoteService from '../hoc/withNoteService';
 import { removeNote } from '../../store/actions/note';
 
-const ShowPage: React.FunctionComponent = ({ list, id, removeNote }: any) => {
+const ShowPage: React.FunctionComponent = ({ history, list, id, removeNote }: any) => {
   const idx: number = list.findIndex((note: any) => note.id === id);
   const note = list[idx];
   if (!note) {
-    return <Redirect to='/notes' />
+    return <Redirect to='/notes' />;
   }
 
   const onDelete = (e: Event) => {
     e.preventDefault();
     if (confirm('Are you sure?')) {
       removeNote(id);
-      return <Redirect to='/notes' />
+      return history.push('/notes');
     }
   };
 
@@ -31,6 +31,7 @@ const ShowPage: React.FunctionComponent = ({ list, id, removeNote }: any) => {
         <Button variant='primary' to='/notes' as={Link}>
           Back to list
         </Button>
+        <Button variant="primary" to={`/note/update/${id}`} as={Link} style={{marginLeft: '20px'}}>Edit</Button>
         <Button variant="danger" onClick={onDelete} style={{marginLeft: '20px'}}>Remove</Button>
       </p>
 
@@ -57,7 +58,9 @@ const mapDispatchToProps = (dispatch: Dispatch, { noteService }: any) => {
   }, dispatch);
 };
 
-export default compose(
-  withNoteService(),
-  connect(mapStateToProps, mapDispatchToProps)
-)(ShowPage);
+export default withRouter(
+  compose(
+    withNoteService(),
+    connect(mapStateToProps, mapDispatchToProps)
+  )(ShowPage)
+);

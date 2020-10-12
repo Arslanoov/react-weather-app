@@ -1,0 +1,93 @@
+import * as React from 'react';
+
+import { Link, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { bindActionCreators, compose, Dispatch } from 'redux';
+import { withRouter } from 'react-router-dom';
+
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+
+import NoteLayout from '../layouts/NoteLayout';
+import { updateNote } from '../../store/actions/note';
+import withNoteService from '../hoc/withNoteService';
+import DummyNoteService from '../services/dummyNoteService';
+
+const UpdatePage: React.FunctionComponent = ({ history, list, id, updateNote }: any) => {
+  const idx: number = list.findIndex((note: any) => note.id === id);
+  const note = list[idx];
+  if (!note) {
+    return <Redirect to='/notes'/>;
+  }
+
+  const [ title, setTitle ] = React.useState(note.title);
+  const [ description, setDescription ] = React.useState(note.description);
+
+  const onTitleChange = (e: any) => {
+    setTitle(e.target.value);
+  };
+
+  const onDescriptionChange = (e: any) => {
+    setDescription(e.target.value);
+  };
+
+  const onFormSubmit = (e: Event) => {
+    e.preventDefault();
+    updateNote(id, title, description);
+    return history.push(`/note/${id}`);
+  };
+
+  return (
+    <NoteLayout>
+      <h3>Update note</h3>
+      <p>
+        <Button variant='primary' to={`/note/${id}`} as={Link}>
+          Back
+        </Button>
+      </p>
+
+      <Form onSubmit={onFormSubmit}>
+        <Form.Group>
+          <Form.Label>Title</Form.Label>
+          <Form.Control onChange={onTitleChange} value={title} type="title" placeholder="Enter note title" />
+        </Form.Group>
+
+        <Form.Group controlId="exampleForm.ControlTextarea1">
+          <Form.Label>Description</Form.Label>
+          <Form.Control onChange={onDescriptionChange} value={description} as="textarea" rows="3" />
+        </Form.Group>
+
+        <Button variant="primary" type="submit">
+          Update
+        </Button>
+      </Form>
+    </NoteLayout>
+  )
+};
+
+interface StateProps {
+  note: {
+    list: Array<any>
+  }
+}
+
+const mapStateToProps = ({ note: { list } }: StateProps) => {
+  return { list };
+};
+
+const mapDispatchToProps = (dispatch: Dispatch, { noteService }: { noteService: DummyNoteService }) => {
+  return bindActionCreators({
+    updateNote: (id: string, title: string, description: string) => updateNote(noteService, {
+      id,
+      title,
+      description
+    })()
+  }, dispatch);
+};
+
+export default withRouter(
+  compose(
+    withNoteService(),
+    connect(mapStateToProps, mapDispatchToProps)
+  )(UpdatePage)
+);
