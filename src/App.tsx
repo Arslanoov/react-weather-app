@@ -5,9 +5,9 @@ import HomePage from "./common/pages/HomePage";
 import NotFoundPage from "./common/pages/NotFoundPage";
 import WeatherByCityPage from "./weather/pages/WeatherByCityPage";
 import IndexPage from './note/pages/IndexPage';
-import CreatePage from './note/pages/CreatePage';
+import CreatePage from './note/pages/CreatePage/index';
 import ShowPage from './note/pages/ShowPage';
-import UpdatePage from './note/pages/UpdatePage';
+import UpdatePage from './note/pages/UpdatePage/index';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 

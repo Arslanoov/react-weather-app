@@ -37,7 +37,7 @@ const ShowPage: React.FunctionComponent = ({ history, list, id, removeNote }: an
 
       <h3>{note.title}</h3>
 
-      <p>{note.description}</p>
+      <div dangerouslySetInnerHTML={{ __html: note.description }} />
     </NoteLayout>
   )
 };

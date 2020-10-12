@@ -6,6 +6,7 @@ import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 
 import './index.scss';
+import NoteLayout from '../../layouts/NoteLayout';
 
 interface Props {
   notes: Array<any>
@@ -18,9 +19,6 @@ const NotesList: React.FunctionComponent<Props> = ({ notes }: Props) => {
         <Card key={note.id + index} className='note' style={{ width: '18rem' }}>
           <Card.Body>
             <Card.Title>{note.title}</Card.Title>
-            <Card.Text>
-              {note.description.slice(0, 20)}...
-            </Card.Text>
 
             <Button as={Link} to={`/note/${note.id}`} variant="primary">View</Button>
           </Card.Body>

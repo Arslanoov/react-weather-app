@@ -5,13 +5,17 @@ import { connect } from 'react-redux';
 import { bindActionCreators, compose, Dispatch } from 'redux';
 import { withRouter } from 'react-router-dom';
 
+import { Editor } from '@tinymce/tinymce-react';
+
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
-import NoteLayout from '../layouts/NoteLayout';
-import { updateNote } from '../../store/actions/note';
-import withNoteService from '../hoc/withNoteService';
-import DummyNoteService from '../services/dummyNoteService';
+import NoteLayout from '../../layouts/NoteLayout';
+import { updateNote } from '../../../store/actions/note';
+import withNoteService from '../../hoc/withNoteService';
+import DummyNoteService from '../../services/dummyNoteService';
+
+import './index.scss';
 
 const UpdatePage: React.FunctionComponent = ({ history, list, id, updateNote }: any) => {
   const idx: number = list.findIndex((note: any) => note.id === id);
@@ -27,8 +31,8 @@ const UpdatePage: React.FunctionComponent = ({ history, list, id, updateNote }: 
     setTitle(e.target.value);
   };
 
-  const onDescriptionChange = (e: any) => {
-    setDescription(e.target.value);
+  const onDescriptionChange = (content: string, editor: any) => {
+    setDescription(content);
   };
 
   const onFormSubmit = (e: Event) => {
@@ -46,15 +50,31 @@ const UpdatePage: React.FunctionComponent = ({ history, list, id, updateNote }: 
         </Button>
       </p>
 
-      <Form onSubmit={onFormSubmit}>
+      <Form onSubmit={onFormSubmit} className='update-form'>
         <Form.Group>
           <Form.Label>Title</Form.Label>
           <Form.Control onChange={onTitleChange} value={title} type="title" placeholder="Enter note title" />
         </Form.Group>
 
         <Form.Group controlId="exampleForm.ControlTextarea1">
-          <Form.Label>Description</Form.Label>
-          <Form.Control onChange={onDescriptionChange} value={description} as="textarea" rows="3" />
+          <Form.Label>Content</Form.Label>
+          <Editor
+            initialValue={note.description}
+            init={{
+              height: 500,
+              menubar: false,
+              plugins: [
+                'advlist autolink lists link image charmap print preview anchor',
+                'searchreplace visualblocks code fullscreen',
+                'insertdatetime media table paste code help wordcount'
+              ],
+              toolbar:
+                'undo redo | formatselect | bold italic backcolor | \
+                alignleft aligncenter alignright alignjustify | \
+                bullist numlist outdent indent | removeformat | help'
+            }}
+            onEditorChange={onDescriptionChange}
+          />
         </Form.Group>
 
         <Button variant="primary" type="submit">
