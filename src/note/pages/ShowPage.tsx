@@ -9,9 +9,10 @@ import Button from 'react-bootstrap/Button';
 import NoteLayout from '../layouts/NoteLayout';
 import withNoteService from '../hoc/withNoteService';
 import { removeNote } from '../../store/actions/note';
+import { Note } from '../services/noteService';
 
 const ShowPage: React.FunctionComponent = ({ history, list, id, removeNote }: any) => {
-  const idx: number = list.findIndex((note: any) => note.id === id);
+  const idx: number = list.findIndex((note: Note) => note.id === id);
   const note = list[idx];
   if (!note) {
     return <Redirect to='/notes' />;

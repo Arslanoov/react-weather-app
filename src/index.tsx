@@ -13,9 +13,10 @@ import WeatherService from './weather/services/weatherService';
 
 import { NoteServiceProvider } from './note/contexts/NoteServiceContext';
 import DummyNoteService from './note/services/dummyNoteService';
+import LocalStorageNoteService from './note/services/localStorageNoteService';
 
 const weatherService = new WeatherService();
-const noteService = new DummyNoteService();
+const noteService = new LocalStorageNoteService();
 
 ReactDOM.render(
   <Provider store={store}>

@@ -6,10 +6,10 @@ import { connect } from 'react-redux';
 
 import Button from 'react-bootstrap/Button';
 
+import NoteServiceInterface from '../services/noteService';
 import NoteLayout from '../layouts/NoteLayout';
 import { getNotes } from '../../store/actions/note';
 import withNoteService from '../hoc/withNoteService';
-import DummyNoteService from '../services/dummyNoteService';
 import NotesList from '../components/NotesList/index';
 
 interface Props {
@@ -45,7 +45,7 @@ const mapStateToProps = ({ note: { list } }: StateProps) => {
   return { list };
 };
 
-const mapDispatchToProps = (dispatch: Dispatch, { noteService }: { noteService: DummyNoteService }) => {
+const mapDispatchToProps = (dispatch: Dispatch, { noteService }: { noteService: NoteServiceInterface }) => {
   return bindActionCreators({
     getNotes: getNotes(noteService)
   }, dispatch);

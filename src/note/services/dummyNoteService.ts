@@ -1,12 +1,7 @@
 import { v4 as uuid } from 'uuid';
+import NoteServiceInterface, { Note } from './noteService';
 
-interface Note {
-  id: string,
-  title: string,
-  description: string
-}
-
-export default class DummyNoteService {
+export default class DummyNoteService implements NoteServiceInterface {
   private data: Array<Note> = [
     {
       id: uuid(),

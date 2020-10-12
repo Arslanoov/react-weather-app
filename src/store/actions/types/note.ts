@@ -1,3 +1,5 @@
+import { Note } from '../../../note/services/noteService';
+
 export const FETCH_NOTES = 'GET_NOTES';
 export const ADD_NOTE = 'ADD_NOTE';
 export const UPDATE_NOTE = 'UPDATE_NOTE';
@@ -5,17 +7,18 @@ export const REMOVE_NOTE = 'REMOVE_NOTE';
 
 interface GetNotesAction {
   type: typeof FETCH_NOTES,
-  payload: Array<any>
+  payload: Array<Note>
 }
 
 interface AddNoteAction {
   type: typeof ADD_NOTE,
-  payload: any
+  payload: Note
 }
 
 interface UpdateNoteAction {
   type: typeof UPDATE_NOTE,
   payload: {
+    id: string,
     title: string,
     description: string
   }

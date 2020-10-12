@@ -12,7 +12,7 @@ import Button from 'react-bootstrap/Button';
 import NoteLayout from '../../layouts/NoteLayout';
 import { addNote } from '../../../store/actions/note';
 import withNoteService from '../../hoc/withNoteService';
-import DummyNoteService from '../../services/dummyNoteService';
+import NoteServiceInterface from '../../services/noteService';
 
 import './index.scss';
 
@@ -82,7 +82,7 @@ const mapStateToProps = () => {
   return { };
 };
 
-const mapDispatchToProps = (dispatch: Dispatch, { noteService }: { noteService: DummyNoteService }) => {
+const mapDispatchToProps = (dispatch: Dispatch, { noteService }: { noteService: NoteServiceInterface }) => {
   return bindActionCreators({
     addNote: (title: string, description: string) => addNote(noteService, title, description)()
   }, dispatch);
