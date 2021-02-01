@@ -5,7 +5,7 @@ import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 
 // @ts-ignore
-import logo from './logo.svg';
+import logo from "./logo.svg";
 
 const Header: React.FunctionComponent = () => {
   return (
@@ -41,12 +41,6 @@ const Header: React.FunctionComponent = () => {
             <Nav.Item>
               <Nav.Link as={NavLink} activeClassName='active' to="/notes" exact>
                 Notes
-              </Nav.Link>
-            </Nav.Item>
-
-            <Nav.Item>
-              <Nav.Link as={NavLink} activeClassName='active' to="/404" exact>
-                404
               </Nav.Link>
             </Nav.Item>
           </Nav>
