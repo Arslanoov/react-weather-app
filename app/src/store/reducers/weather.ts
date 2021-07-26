@@ -4,8 +4,8 @@ import {
   GET_DAILY_FORECAST_BY_CITY_REQUESTED,
   GET_DAILY_FORECAST_BY_CITY_LOADED,
   CLEAR_WEATHER_AND_FORECAST_DATA,
-  WeatherActionTypes
-} from "../actions/types/weather";
+  WeatherActionTypes,
+} from '../actions/types/weather';
 
 const initialState: any = {
   city: {
@@ -13,13 +13,13 @@ const initialState: any = {
     loadingForecast: false,
     name: '',
     weather: null,
-    forecast: null
-  }
+    forecast: null,
+  },
 };
 
 export function weatherReducer(
   state: any = initialState,
-  action: WeatherActionTypes
+  action: WeatherActionTypes,
 ): any {
   switch (action.type) {
     case GET_WEATHER_BY_CITY_REQUESTED:
@@ -28,8 +28,8 @@ export function weatherReducer(
         city: {
           ...state.city,
           name: action.payload,
-          loadingWeather: true
-        }
+          loadingWeather: true,
+        },
       };
 
     case GET_WEATHER_BY_CITY_LOADED:
@@ -38,8 +38,8 @@ export function weatherReducer(
         city: {
           ...state.city,
           weather: action.payload,
-          loadingWeather: false
-        }
+          loadingWeather: false,
+        },
       };
 
     case GET_DAILY_FORECAST_BY_CITY_REQUESTED:
@@ -47,8 +47,8 @@ export function weatherReducer(
         ...state,
         city: {
           ...state.city,
-          loadingForecast: true
-        }
+          loadingForecast: true,
+        },
       };
 
     case GET_DAILY_FORECAST_BY_CITY_LOADED:
@@ -57,8 +57,8 @@ export function weatherReducer(
         city: {
           ...state.city,
           loadingForecast: false,
-          forecast: action.payload
-        }
+          forecast: action.payload,
+        },
       };
 
     case CLEAR_WEATHER_AND_FORECAST_DATA:
@@ -67,8 +67,8 @@ export function weatherReducer(
         city: {
           ...state.city,
           weather: null,
-          forecast: null
-        }
+          forecast: null,
+        },
       };
 
     default:

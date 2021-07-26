@@ -13,16 +13,16 @@ module.exports = () => {
   }, {});
 
   return {
-    mode: "development",
+    mode: 'development',
 
     entry: path.resolve(__dirname, 'src', 'index.tsx'),
 
     resolve: {
-      extensions: [".js", ".jsx", ".ts", ".tsx", ".css", ".scss", ".sass"],
+      extensions: ['.js', '.jsx', '.ts', '.tsx', '.css', '.scss', '.sass'],
     },
 
     output: {
-      publicPath: 'http://localhost:8080/'
+      publicPath: 'http://localhost:8080/',
     },
 
     module: {
@@ -30,7 +30,7 @@ module.exports = () => {
         {
           test: /\.(js|jsx|ts|tsx)$/,
           exclude: /node_modules/,
-          loader: 'babel-loader'
+          loader: 'babel-loader',
         },
 
         {
@@ -40,10 +40,10 @@ module.exports = () => {
               loader: 'file-loader',
               options: {
                 outputPath: 'images',
-                name: '[name]-[sha1:hash:7].[ext]'
-              }
-            }
-          ]
+                name: '[name]-[sha1:hash:7].[ext]',
+              },
+            },
+          ],
         },
 
         // Loading fonts
@@ -54,16 +54,16 @@ module.exports = () => {
               loader: 'file-loader',
               options: {
                 outputPath: 'fonts',
-                name: '[name].[ext]'
-              }
-            }
-          ]
+                name: '[name].[ext]',
+              },
+            },
+          ],
         },
 
         // Loading CSS
         {
           test: /\.(css)$/,
-          use: [ MiniCssExtractPlugin.loader, 'css-loader']
+          use: [MiniCssExtractPlugin.loader, 'css-loader'],
         },
 
         // Loading SASS/SCSS
@@ -77,28 +77,28 @@ module.exports = () => {
             {
               loader: 'sass-resources-loader',
               options: {
-                resources: ['./src/core/variables.scss']
-              }
-            }
-          ]
-        }
-      ]
+                resources: ['./src/core/variables.scss'],
+              },
+            },
+          ],
+        },
+      ],
     },
 
     plugins: [
       new HtmlWebpackPlugin({
         title: 'Weather App',
-        template: 'public/index.html'
+        template: 'public/index.html',
       }),
       new MiniCssExtractPlugin({
-        filename: 'main-[hash:8].css'
+        filename: 'main-[hash:8].css',
       }),
-      new webpack.DefinePlugin(envKeys)
+      new webpack.DefinePlugin(envKeys),
     ],
 
     devServer: {
       open: true,
-      historyApiFallback: true
-    }
-  }
+      historyApiFallback: true,
+    },
+  };
 };

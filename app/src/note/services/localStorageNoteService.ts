@@ -1,5 +1,5 @@
-import NoteServiceInterface, {Note} from './noteService';
 import { v4 as uuid } from 'uuid';
+import NoteServiceInterface, { Note } from './noteService';
 
 export default class LocalStorageNoteService implements NoteServiceInterface {
   getNotes(): Array<Note> {
@@ -19,7 +19,7 @@ export default class LocalStorageNoteService implements NoteServiceInterface {
     notes.push({
       id,
       title,
-      description
+      description,
     });
 
     localStorage.setItem('notes', JSON.stringify(notes));
@@ -33,9 +33,9 @@ export default class LocalStorageNoteService implements NoteServiceInterface {
 
     if (notes[idx]) {
       notes[idx] = {
-        id: id,
-        title: title,
-        description: description
+        id,
+        title,
+        description,
       };
     }
 

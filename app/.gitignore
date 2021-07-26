@@ -1,4 +1,8 @@
+# Deps
 node_modules
-.idea
+
+# Build files
 dist
+
+# Env
 .env

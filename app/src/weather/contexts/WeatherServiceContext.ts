@@ -2,10 +2,10 @@ import * as React from 'react';
 
 const {
   Provider: WeatherServiceProvider,
-  Consumer: WeatherServiceConsumer
+  Consumer: WeatherServiceConsumer,
 } = React.createContext({});
 
 export {
   WeatherServiceProvider,
-  WeatherServiceConsumer
+  WeatherServiceConsumer,
 };

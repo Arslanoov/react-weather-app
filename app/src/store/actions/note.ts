@@ -1,44 +1,36 @@
+import { Dispatch } from 'redux';
 import {
   ADD_NOTE,
   FETCH_NOTES,
   UPDATE_NOTE,
-  REMOVE_NOTE
+  REMOVE_NOTE,
 } from './types/note';
 
-import { Dispatch } from 'redux';
 import NoteServiceInterface, { Note } from '../../note/services/noteService';
 
-const fetchNotes = (list: Array<any>) => {
-  return {
-    type: FETCH_NOTES,
-    payload: list
-  }
-};
+const fetchNotes = (list: Array<any>) => ({
+  type: FETCH_NOTES,
+  payload: list,
+});
 
-const addNoteRequest = (note: Note) => {
-  return {
-    type: ADD_NOTE,
-    payload: note
-  }
-};
+const addNoteRequest = (note: Note) => ({
+  type: ADD_NOTE,
+  payload: note,
+});
 
-const updateNoteRequest = (id: string, title: string, description: string) => {
-  return {
-    type: UPDATE_NOTE,
-    payload: {
-      id,
-      title,
-      description
-    }
-  }
-};
+const updateNoteRequest = (id: string, title: string, description: string) => ({
+  type: UPDATE_NOTE,
+  payload: {
+    id,
+    title,
+    description,
+  },
+});
 
-const removeNoteRequest = (id: string) => {
-  return {
-    type: REMOVE_NOTE,
-    payload: id
-  }
-};
+const removeNoteRequest = (id: string) => ({
+  type: REMOVE_NOTE,
+  payload: id,
+});
 
 const getNotes = (noteService: NoteServiceInterface) => () => (dispatch: Dispatch) => {
   const list = noteService.getNotes();
@@ -50,7 +42,7 @@ const addNote = (noteService: NoteServiceInterface, title: string, description: 
   dispatch(addNoteRequest({
     id,
     title,
-    description
+    description,
   }));
 };
 
@@ -68,5 +60,5 @@ export {
   getNotes,
   addNote,
   updateNote,
-  removeNote
+  removeNote,
 };

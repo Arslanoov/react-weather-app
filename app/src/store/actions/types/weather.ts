@@ -33,5 +33,4 @@ export type WeatherActionTypes =
   GetWeatherByCityLoadedAction |
   GetDailyForecastByCityRequestedAction |
   GetDailyForecastByCityLoadedAction |
-  ClearWeatherAndForecastData
-;
+  ClearWeatherAndForecastData;

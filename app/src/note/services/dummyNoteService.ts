@@ -6,23 +6,23 @@ export default class DummyNoteService implements NoteServiceInterface {
     {
       id: uuid(),
       title: 'Some note',
-      description: 'Lotem ipsum doler sit amit...'
+      description: 'Lotem ipsum doler sit amit...',
     },
     {
       id: uuid(),
       title: 'Some note 2',
-      description: 'Lotem ipsum doler sit amit... 2'
+      description: 'Lotem ipsum doler sit amit... 2',
     },
     {
       id: uuid(),
       title: 'Some note 3',
-      description: 'Lotem ipsum doler sit amit... 3'
+      description: 'Lotem ipsum doler sit amit... 3',
     },
     {
       id: uuid(),
       title: 'Some note 4',
-      description: 'Lotem ipsum doler sit amit... 4'
-    }
+      description: 'Lotem ipsum doler sit amit... 4',
+    },
   ];
 
   getNotes(): Array<Note> {
@@ -35,7 +35,7 @@ export default class DummyNoteService implements NoteServiceInterface {
     this.data.push({
       id,
       title,
-      description
+      description,
     });
 
     return id;
@@ -46,9 +46,9 @@ export default class DummyNoteService implements NoteServiceInterface {
 
     if (this.data[idx]) {
       this.data[idx] = {
-        id: id,
-        title: title,
-        description: description
+        id,
+        title,
+        description,
       };
     }
   }

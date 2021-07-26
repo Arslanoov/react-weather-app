@@ -5,12 +5,12 @@ const initialState: any = {
       loadingForecast: false,
       name: 'Moscow',
       now: [],
-      forecast: []
-    }
+      forecast: [],
+    },
   },
   note: {
-    list: []
-  }
+    list: [],
+  },
 };
 
 export default initialState;
