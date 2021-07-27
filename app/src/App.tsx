@@ -1,70 +1,91 @@
 import * as React from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import {
+  Switch,
+  Route,
+  Redirect,
+  BrowserRouter as Router,
+} from 'react-router-dom';
 
-import HomePage from "./common/pages/HomePage";
-import NotFoundPage from "./common/pages/NotFoundPage";
-import WeatherByCityPage from "./weather/pages/WeatherByCityPage";
+import HomePage from './common/pages/HomePage';
+import NotFoundPage from './common/pages/NotFoundPage';
+import WeatherByCityPage from './weather/pages/WeatherByCityPage';
 import IndexPage from './note/pages/IndexPage';
 import CreatePage from './note/pages/CreatePage/index';
 import ShowPage from './note/pages/ShowPage';
 import UpdatePage from './note/pages/UpdatePage/index';
 
+import { NoteServiceProvider } from './note/contexts/NoteServiceContext';
+import { WeatherServiceProvider } from './weather/contexts/WeatherServiceContext';
+
+import WeatherService from './weather/services/weatherService';
+// import DummyNoteService from './note/services/dummyNoteService';
+import LocalStorageNoteService from './note/services/localStorageNoteService';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const App: React.FunctionComponent = () => {
-  return (
-    <Switch>
-      <Route
-        path='/'
-        component={HomePage}
-        exact
-      />
+const weatherService = new WeatherService();
+const noteService = new LocalStorageNoteService();
 
-      <Route
-        path='/weather'
-        component={WeatherByCityPage}
-        exact
-      />
+const App: React.FC = () => (
+  <WeatherServiceProvider value={weatherService}>
+    <NoteServiceProvider value={noteService}>
+      <Router>
+        <main className="main">
+          <Switch>
+            <Route
+              path="/"
+              component={HomePage}
+              exact
+            />
 
-      <Route
-        path='/notes'
-        component={IndexPage}
-        exact
-      />
+            <Route
+              path="/weather"
+              component={WeatherByCityPage}
+              exact
+            />
 
-      <Route
-        path='/create'
-        component={CreatePage}
-        exact
-      />
+            <Route
+              path="/notes"
+              component={IndexPage}
+              exact
+            />
 
-      <Route
-        path='/note/update/:id'
-        render={({ match }) => {
-          const { id } = match.params;
-          return <UpdatePage id={id} />
-        }}
-      />
+            <Route
+              path="/create"
+              component={CreatePage}
+              exact
+            />
 
-      <Route
-        path='/note/:id'
-        render={({ match }) => {
-          const { id } = match.params;
-          return <ShowPage id={id} />
-        }}
-      />
+            <Route
+              path="/note/update/:id"
+              render={({ match }) => {
+                const { id } = match.params;
+                return <UpdatePage id={id} />;
+              }}
+            />
 
-      <Route
-        path='/404'
-        component={NotFoundPage}
-        exact
-      />
+            <Route
+              path="/note/:id"
+              render={({ match }) => {
+                const { id } = match.params;
+                return <ShowPage id={id} />;
+              }}
+            />
 
-      <Route>
-        <Redirect to='/404' />
-      </Route>
-    </Switch>
-  )
-};
+            <Route
+              path="/404"
+              component={NotFoundPage}
+              exact
+            />
+
+            <Route>
+              <Redirect to="/404" />
+            </Route>
+          </Switch>
+        </main>
+      </Router>
+    </NoteServiceProvider>
+  </WeatherServiceProvider>
+);
 
 export default App;

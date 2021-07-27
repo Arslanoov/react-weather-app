@@ -16,9 +16,9 @@ import NoteServiceInterface from '../../services/noteService';
 
 import './index.scss';
 
-const CreatePage: React.FunctionComponent = ({ addNote, history }: any) => {
-  const [ title, setTitle ] = React.useState('Title');
-  const [ description, setDescription ] = React.useState('<p>Note content</p>');
+const CreatePage: React.FC = ({ addNote, history }: any) => {
+  const [title, setTitle] = React.useState('Title');
+  const [description, setDescription] = React.useState('<p>Note content</p>');
 
   const onTitleChange = (e: any) => {
     setTitle(e.target.value);
@@ -38,12 +38,12 @@ const CreatePage: React.FunctionComponent = ({ addNote, history }: any) => {
     <NoteLayout>
       <h3>Create page</h3>
       <p>
-        <Button variant='primary'  to='/notes' as={Link}>
+        <Button variant="primary" to="/notes" as={Link}>
           Back to list
         </Button>
       </p>
 
-      <Form onSubmit={onFormSubmit} className='create-form'>
+      <Form onSubmit={onFormSubmit} className="create-form">
         <Form.Group>
           <Form.Label>Title</Form.Label>
           <Form.Control onChange={onTitleChange} value={title} type="title" placeholder="Enter note title" />
@@ -59,12 +59,12 @@ const CreatePage: React.FunctionComponent = ({ addNote, history }: any) => {
               plugins: [
                 'advlist autolink lists link image charmap print preview anchor',
                 'searchreplace visualblocks code fullscreen',
-                'insertdatetime media table paste code help wordcount'
+                'insertdatetime media table paste code help wordcount',
               ],
               toolbar:
                 'undo redo | formatselect | bold italic backcolor | \
                 alignleft aligncenter alignright alignjustify | \
-                bullist numlist outdent indent | removeformat | help'
+                bullist numlist outdent indent | removeformat | help',
             }}
             onEditorChange={onDescriptionChange}
           />
@@ -75,20 +75,16 @@ const CreatePage: React.FunctionComponent = ({ addNote, history }: any) => {
         </Button>
       </Form>
     </NoteLayout>
-  )
+  );
 };
 
-const mapStateToProps = () => {
-  return { };
-};
+const mapStateToProps = () => ({ });
 
-const mapDispatchToProps = (dispatch: Dispatch, { noteService }: { noteService: NoteServiceInterface }) => {
-  return bindActionCreators({
-    addNote: (title: string, description: string) => addNote(noteService, title, description)()
-  }, dispatch);
-};
+const mapDispatchToProps = (dispatch: Dispatch, { noteService }: { noteService: NoteServiceInterface }) => bindActionCreators({
+  addNote: (title: string, description: string) => addNote(noteService, title, description)(),
+}, dispatch);
 
 export default compose(
   withNoteService(),
-  connect(mapStateToProps, mapDispatchToProps)
+  connect(mapStateToProps, mapDispatchToProps),
 )(CreatePage);

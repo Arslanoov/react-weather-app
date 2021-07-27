@@ -1,17 +1,17 @@
 import * as React from 'react';
 
 import { bindActionCreators, compose, Dispatch } from 'redux';
-import { connect } from "react-redux";
+import { connect } from 'react-redux';
 
 import Form from 'react-bootstrap/Form';
 
 import WeatherLayout from '../layouts/WeatherLayout';
-import { getWeatherByCity, clearWeatherAndForecastData } from "../../store/actions/weather";
+import { getWeatherByCity, clearWeatherAndForecastData } from '../../store/actions/weather';
 
-import Loader from "../../common/components/Loader";
-import WeatherService from "../services/weatherService";
-import withWeatherService from "../hoc/withWeatherService";
-import WeatherData from "../components/WeatherData";
+import Loader from '../../common/components/Loader';
+import WeatherService from '../services/weatherService';
+import withWeatherService from '../hoc/withWeatherService';
+import WeatherData from '../components/WeatherData';
 import ForecastTable from '../components/ForecastTable';
 
 interface Props {
@@ -24,11 +24,10 @@ interface Props {
   forecast: any,
 }
 
-const WeatherByCityPage: React.FunctionComponent<Props> = ({
-    getWeather, clearWeatherAndForecastData, loadingWeather, loadingForecast, name, weather, forecast
-  }: Props
-) => {
-  const [ city, setCity ] = React.useState(name ?? 'Moscow');
+const WeatherByCityPage: React.FC<Props> = ({
+  getWeather, clearWeatherAndForecastData, loadingWeather, loadingForecast, name, weather, forecast,
+}: Props) => {
+  const [city, setCity] = React.useState(name ?? 'Moscow');
 
   React.useEffect(() => {
     getWeather(name);
@@ -47,7 +46,7 @@ const WeatherByCityPage: React.FunctionComponent<Props> = ({
   };
 
   const loader = (
-    <div className='text-center'>
+    <div className="text-center">
       <Loader />
     </div>
   );
@@ -55,8 +54,11 @@ const WeatherByCityPage: React.FunctionComponent<Props> = ({
   return (
     <WeatherLayout>
       <Form onSubmit={onCitySubmit}>
-        <Form.Group className='col-sm-5 mx-auto'>
-          <h3 className='text-center'>City: {name}</h3>
+        <Form.Group className="col-sm-5 mx-auto">
+          <h3 className="text-center">
+            City:
+            {name}
+          </h3>
           <Form.Control type="text" value={city} onChange={onCityChange} />
         </Form.Group>
       </Form>
@@ -70,7 +72,7 @@ const WeatherByCityPage: React.FunctionComponent<Props> = ({
         </>
       )}
     </WeatherLayout>
-  )
+  );
 };
 
 interface StateProps {
@@ -85,18 +87,24 @@ interface StateProps {
   }
 }
 
-const mapStateToProps = ({ weather: { city: { loadingWeather, loadingForecast, name, weather, forecast } } }: StateProps) => {
-  return { loadingWeather, loadingForecast, name, weather, forecast };
-};
+const mapStateToProps = ({
+  weather: {
+    city: {
+      loadingWeather, loadingForecast, name, weather, forecast,
+    },
+  },
+}: StateProps) => ({
+  loadingWeather, loadingForecast, name, weather, forecast,
+});
 
-const mapDispatchToProps = (dispatch: Dispatch, { weatherService}: {weatherService: WeatherService}) => {
-  return bindActionCreators({
-    getWeather: (cityName) => getWeatherByCity(weatherService, cityName)(),
-    clearWeatherAndForecastData: clearWeatherAndForecastData
-  }, dispatch);
-};
+const mapDispatchToProps = (dispatch: Dispatch, { weatherService }: {
+  weatherService: WeatherService
+}) => bindActionCreators({
+  getWeather: (cityName) => getWeatherByCity(weatherService, cityName)(),
+  clearWeatherAndForecastData,
+}, dispatch);
 
 export default compose(
   withWeatherService(),
-  connect(mapStateToProps, mapDispatchToProps)
+  connect(mapStateToProps, mapDispatchToProps),
 )(WeatherByCityPage);

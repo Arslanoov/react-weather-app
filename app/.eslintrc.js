@@ -4,7 +4,8 @@ module.exports = {
     project: './tsconfig.json',
   },
   rules: {
-    'no-param-reassign': 'off'
+    'no-param-reassign': 'off',
+    'react/prop-types': 'off',
   },
   ignorePatterns: [
     '.eslintrc.js'

@@ -11,11 +11,13 @@ import withNoteService from '../hoc/withNoteService';
 import { removeNote } from '../../store/actions/note';
 import { Note } from '../services/noteService';
 
-const ShowPage: React.FunctionComponent = ({ history, list, id, removeNote }: any) => {
+const ShowPage: React.FC = ({
+  history, list, id, removeNote,
+}: any) => {
   const idx: number = list.findIndex((note: Note) => note.id === id);
   const note = list[idx];
   if (!note) {
-    return <Redirect to='/notes' />;
+    return <Redirect to="/notes" />;
   }
 
   const onDelete = (e: Event) => {
@@ -29,18 +31,18 @@ const ShowPage: React.FunctionComponent = ({ history, list, id, removeNote }: an
   return (
     <NoteLayout>
       <p>
-        <Button variant='primary' to='/notes' as={Link}>
+        <Button variant="primary" to="/notes" as={Link}>
           Back to list
         </Button>
-        <Button variant="primary" to={`/note/update/${id}`} as={Link} style={{marginLeft: '20px'}}>Edit</Button>
-        <Button variant="danger" onClick={onDelete} style={{marginLeft: '20px'}}>Remove</Button>
+        <Button variant="primary" to={`/note/update/${id}`} as={Link} style={{ marginLeft: '20px' }}>Edit</Button>
+        <Button variant="danger" onClick={onDelete} style={{ marginLeft: '20px' }}>Remove</Button>
       </p>
 
       <h3>{note.title}</h3>
 
       <div dangerouslySetInnerHTML={{ __html: note.description }} />
     </NoteLayout>
-  )
+  );
 };
 
 interface StateProps {
@@ -49,19 +51,15 @@ interface StateProps {
   }
 }
 
-const mapStateToProps = ({ note: { list } }: StateProps) => {
-  return { list };
-};
+const mapStateToProps = ({ note: { list } }: StateProps) => ({ list });
 
-const mapDispatchToProps = (dispatch: Dispatch, { noteService }: any) => {
-  return bindActionCreators({
-    removeNote: (id: string) => removeNote(noteService, id)()
-  }, dispatch);
-};
+const mapDispatchToProps = (dispatch: Dispatch, { noteService }: any) => bindActionCreators({
+  removeNote: (id: string) => removeNote(noteService, id)(),
+}, dispatch);
 
 export default withRouter(
   compose(
     withNoteService(),
-    connect(mapStateToProps, mapDispatchToProps)
-  )(ShowPage)
+    connect(mapStateToProps, mapDispatchToProps),
+  )(ShowPage),
 );

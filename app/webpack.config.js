@@ -1,8 +1,9 @@
+const path = require('path');
+const dotenv = require('dotenv');
 const webpack = require('webpack');
+
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const dotenv = require('dotenv');
-const path = require('path');
 
 module.exports = () => {
   const env = dotenv.config().parsed;
@@ -46,7 +47,6 @@ module.exports = () => {
           ],
         },
 
-        // Loading fonts
         {
           test: /\.(ttf|otf|eot|woff|woff2)$/,
           use: [
@@ -60,13 +60,11 @@ module.exports = () => {
           ],
         },
 
-        // Loading CSS
         {
           test: /\.(css)$/,
           use: [MiniCssExtractPlugin.loader, 'css-loader'],
         },
 
-        // Loading SASS/SCSS
         {
           test: /\.(s[ca]ss)$/,
           use: [

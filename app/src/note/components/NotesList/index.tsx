@@ -11,7 +11,7 @@ interface Props {
   notes: Array<any>
 }
 
-const NotesList: React.FunctionComponent<Props> = ({ notes }: Props) => (
+const NotesList: React.FC<Props> = ({ notes }: Props) => (
   <div className="notes-list">
     {notes.map((note, index) => (
       <Card key={note.id + index} className="note">
