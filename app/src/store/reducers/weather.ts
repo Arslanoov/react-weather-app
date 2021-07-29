@@ -15,7 +15,7 @@ const initialState: WeatherState = {
   city: {
     loadingWeather: false,
     loadingForecast: false,
-    name: '',
+    name: 'Moscow',
     weather: null,
     forecast: null,
   },
@@ -34,7 +34,7 @@ export function weatherReducer(
           name: action.payload,
           loadingWeather: true,
         },
-      };
+      }
 
     case WeatherActionType.GET_WEATHER_BY_CITY_LOADED:
       return {
@@ -44,7 +44,7 @@ export function weatherReducer(
           weather: action.payload,
           loadingWeather: false,
         },
-      };
+      }
 
     case WeatherActionType.GET_DAILY_FORECAST_BY_CITY_REQUESTED:
       return {
@@ -53,7 +53,7 @@ export function weatherReducer(
           ...state.city,
           loadingForecast: true,
         },
-      };
+      }
 
     case WeatherActionType.GET_DAILY_FORECAST_BY_CITY_LOADED:
       return {
@@ -63,7 +63,7 @@ export function weatherReducer(
           loadingForecast: false,
           forecast: action.payload,
         },
-      };
+      }
 
     case WeatherActionType.CLEAR_WEATHER_AND_FORECAST_DATA:
       return {
@@ -73,11 +73,11 @@ export function weatherReducer(
           weather: null,
           forecast: null,
         },
-      };
+      }
 
     default:
-      return state;
+      return state
   }
 }
 
-export default weatherReducer;
+export default weatherReducer

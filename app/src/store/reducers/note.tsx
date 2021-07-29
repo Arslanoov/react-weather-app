@@ -1,63 +1,76 @@
-import {ADD_NOTE, FETCH_NOTES, NoteActionTypes, REMOVE_NOTE, UPDATE_NOTE} from '../actions/types/note';
-import { Note } from '../../note/services/noteService';
+import { NoteActionType } from '../action-types'
+import { NoteAction } from '../actions'
+import { Note } from '../../note/services/noteService'
 
-const initialState: any = {
-  list: []
-};
+interface ForecastData {
+  id: number | string
+}
+
+///
+
+interface NoteState {
+  list: ForecastData[]
+}
+
+const initialState: NoteState = {
+  list: [],
+}
 
 export function noteReducer(
-  state: any = initialState,
-  action: NoteActionTypes
+  state: NoteState = initialState,
+  action: NoteAction,
 ): any {
   switch (action.type) {
-    case FETCH_NOTES:
+    case NoteActionType.FETCH_NOTES:
       return {
         ...state,
-        list: action.payload
-      };
+        list: action.payload,
+      }
 
-    case ADD_NOTE:
+    case NoteActionType.ADD_NOTE:
       return {
         ...state,
         list: [
           ...state.list,
-          action.payload
-        ]
-      };
+          action.payload,
+        ],
+      }
 
-    case UPDATE_NOTE:
-      const updateItemIdx: number = state.list.findIndex((note: Note) => note.id === action.payload.id);
-      const updateItem = state.list[updateItemIdx];
+    case NoteActionType.UPDATE_NOTE: {
+      const updateItemIdx: number = state.list.findIndex((note: Note) => note.id === action.payload.id)
+      const updateItem = state.list[updateItemIdx]
 
       const newItem = {
         id: updateItem.id,
         title: action.payload.title,
-        description: action.payload.description
-      };
+        description: action.payload.description,
+      }
 
       return {
         ...state,
         list: [
           ...state.list.slice(0, updateItemIdx),
           newItem,
-          ...state.list.slice(updateItemIdx + 1)
-        ]
-      };
+          ...state.list.slice(updateItemIdx + 1),
+        ],
+      }
+    }
 
-    case REMOVE_NOTE:
-      const idx: number = state.list.findIndex((note: Note) => note.id === action.payload);
+    case NoteActionType.REMOVE_NOTE: {
+      const idx: number = state.list.findIndex((note: Note) => note.id === action.payload)
 
       return {
         ...state,
         list: [
           ...state.list.slice(0, idx),
-          ...state.list.slice(idx + 1)
-        ]
-      };
+          ...state.list.slice(idx + 1),
+        ],
+      }
+    }
 
     default:
-      return state;
+      return state
   }
 }
 
-export default noteReducer;
+export default noteReducer

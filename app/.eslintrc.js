@@ -7,7 +7,8 @@ module.exports = {
     quotes: ['error', 'single'],
     semi: ['error', 'never'],
 
-    'max-lines': ['error', { max: 120, skipBlankLines: true }],
+    'max-lines': ['error', { max: 200, skipBlankLines: true }],
+    'max-len': ['error', { code: 120 }],
 
     'no-param-reassign': 'off',
     'react/prop-types': 'off',
