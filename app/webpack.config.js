@@ -75,7 +75,7 @@ module.exports = () => {
             {
               loader: 'sass-resources-loader',
               options: {
-                resources: ['./src/core/variables.scss'],
+                resources: ['./src/assets/variables.scss'],
               },
             },
           ],

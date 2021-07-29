@@ -1,13 +1,17 @@
-import {
-  GET_WEATHER_BY_CITY_REQUESTED,
-  GET_WEATHER_BY_CITY_LOADED,
-  GET_DAILY_FORECAST_BY_CITY_REQUESTED,
-  GET_DAILY_FORECAST_BY_CITY_LOADED,
-  CLEAR_WEATHER_AND_FORECAST_DATA,
-  WeatherActionTypes,
-} from '../actions/types/weather';
+import { WeatherActionType } from '../action-types'
+import { WeatherAction } from '../actions'
 
-const initialState: any = {
+interface WeatherState {
+  city: {
+    loadingWeather: boolean,
+    loadingForecast: boolean,
+    name: string,
+    weather: any,
+    forecast: any,
+  }
+}
+
+const initialState: WeatherState = {
   city: {
     loadingWeather: false,
     loadingForecast: false,
@@ -15,14 +19,14 @@ const initialState: any = {
     weather: null,
     forecast: null,
   },
-};
+}
 
 export function weatherReducer(
-  state: any = initialState,
-  action: WeatherActionTypes,
-): any {
+  state: WeatherState = initialState,
+  action: WeatherAction,
+): WeatherState {
   switch (action.type) {
-    case GET_WEATHER_BY_CITY_REQUESTED:
+    case WeatherActionType.GET_WEATHER_BY_CITY_REQUESTED:
       return {
         ...state,
         city: {
@@ -32,7 +36,7 @@ export function weatherReducer(
         },
       };
 
-    case GET_WEATHER_BY_CITY_LOADED:
+    case WeatherActionType.GET_WEATHER_BY_CITY_LOADED:
       return {
         ...state,
         city: {
@@ -42,7 +46,7 @@ export function weatherReducer(
         },
       };
 
-    case GET_DAILY_FORECAST_BY_CITY_REQUESTED:
+    case WeatherActionType.GET_DAILY_FORECAST_BY_CITY_REQUESTED:
       return {
         ...state,
         city: {
@@ -51,7 +55,7 @@ export function weatherReducer(
         },
       };
 
-    case GET_DAILY_FORECAST_BY_CITY_LOADED:
+    case WeatherActionType.GET_DAILY_FORECAST_BY_CITY_LOADED:
       return {
         ...state,
         city: {
@@ -61,7 +65,7 @@ export function weatherReducer(
         },
       };
 
-    case CLEAR_WEATHER_AND_FORECAST_DATA:
+    case WeatherActionType.CLEAR_WEATHER_AND_FORECAST_DATA:
       return {
         ...state,
         city: {

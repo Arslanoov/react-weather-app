@@ -1,11 +1,13 @@
-import { combineReducers } from 'redux';
+import { combineReducers } from 'redux'
 
-import weatherReducer from "./weather";
-import noteReducer from './note';
+import weather from './weather'
+import note from './note'
 
 const appReducer = combineReducers({
-  weather: weatherReducer,
-  note: noteReducer
-});
+  weather,
+  note,
+})
 
-export default appReducer;
+export default appReducer
+
+export type RootState = ReturnType<typeof appReducer>
