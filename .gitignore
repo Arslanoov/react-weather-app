@@ -1,4 +1,2 @@
-node_modules
+etc
 .idea
-dist
-.env
