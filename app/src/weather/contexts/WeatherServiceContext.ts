@@ -1,11 +1,11 @@
-import * as React from 'react';
+import * as React from 'react'
 
 const {
   Provider: WeatherServiceProvider,
   Consumer: WeatherServiceConsumer,
-} = React.createContext({});
+} = React.createContext({})
 
 export {
   WeatherServiceProvider,
   WeatherServiceConsumer,
-};
+}

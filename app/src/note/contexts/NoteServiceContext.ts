@@ -1,11 +1,11 @@
-import * as React from 'react';
+import * as React from 'react'
 
 const {
   Provider: NoteServiceProvider,
   Consumer: NoteServiceConsumer,
-} = React.createContext({});
+} = React.createContext({})
 
 export {
   NoteServiceProvider,
   NoteServiceConsumer,
-};
+}

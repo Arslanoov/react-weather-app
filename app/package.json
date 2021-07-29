@@ -8,10 +8,10 @@
     "start": "webpack-dev-server",
     "build": "webpack",
     "test:unit": "jest",
-    "lint": "npx eslint . --ext .ts, .tsx --no-error-on-unmatched-pattern",
-    "lint:fix": "npx eslint . --ext .ts, .tsx --no-error-on-unmatched-pattern --fix",
-    "lint:style": "stylelint \"**/*.{scss}\" --ignore-path .gitignore",
-    "lint:style:fix": "stylelint \"**/*.{scss}\" --fix --ignore-path .gitignore"
+    "lint": "npx eslint --ext \".js,.ts,.jsx,.tsx\" --ignore-path .gitignore .",
+    "lint:fix": "npx eslint --fix --ext \".js,.ts,.jsx,.tsx\" --ignore-path .gitignore .",
+    "lint:style": "stylelint \"**/*.{scss}\" .gitignore",
+    "lint:style:fix": "stylelint \"**/*.{scss}\" .gitignore"
   },
   "repository": {
     "type": "git",

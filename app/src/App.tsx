@@ -1,30 +1,30 @@
-import * as React from 'react';
+import * as React from 'react'
 import {
   Switch,
   Route,
   Redirect,
   BrowserRouter as Router,
-} from 'react-router-dom';
+} from 'react-router-dom'
 
-import HomePage from './common/pages/HomePage';
-import NotFoundPage from './common/pages/NotFoundPage';
-import WeatherByCityPage from './weather/pages/WeatherByCityPage';
-import IndexPage from './note/pages/IndexPage';
-import CreatePage from './note/pages/CreatePage/index';
-import ShowPage from './note/pages/ShowPage';
-import UpdatePage from './note/pages/UpdatePage/index';
+import HomePage from './common/pages/HomePage'
+import NotFoundPage from './common/pages/NotFoundPage'
+import WeatherByCityPage from './weather/pages/WeatherByCityPage'
+import IndexPage from './note/pages/IndexPage'
+import CreatePage from './note/pages/CreatePage/index'
+import ShowPage from './note/pages/ShowPage'
+import UpdatePage from './note/pages/UpdatePage/index'
 
-import { NoteServiceProvider } from './note/contexts/NoteServiceContext';
-import { WeatherServiceProvider } from './weather/contexts/WeatherServiceContext';
+import { NoteServiceProvider } from './note/contexts/NoteServiceContext'
+import { WeatherServiceProvider } from './weather/contexts/WeatherServiceContext'
 
-import WeatherService from './weather/services/weatherService';
+import WeatherService from './weather/services/weatherService'
 // import DummyNoteService from './note/services/dummyNoteService';
-import LocalStorageNoteService from './note/services/localStorageNoteService';
+import LocalStorageNoteService from './note/services/localStorageNoteService'
 
-import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/css/bootstrap.min.css'
 
-const weatherService = new WeatherService();
-const noteService = new LocalStorageNoteService();
+const weatherService = new WeatherService()
+const noteService = new LocalStorageNoteService()
 
 const App: React.FC = () => (
   <WeatherServiceProvider value={weatherService}>
@@ -59,16 +59,16 @@ const App: React.FC = () => (
             <Route
               path="/note/update/:id"
               render={({ match }) => {
-                const { id } = match.params;
-                return <UpdatePage id={id} />;
+                const { id } = match.params
+                return <UpdatePage id={id} />
               }}
             />
 
             <Route
               path="/note/:id"
               render={({ match }) => {
-                const { id } = match.params;
-                return <ShowPage id={id} />;
+                const { id } = match.params
+                return <ShowPage id={id} />
               }}
             />
 
@@ -86,6 +86,6 @@ const App: React.FC = () => (
       </Router>
     </NoteServiceProvider>
   </WeatherServiceProvider>
-);
+)
 
-export default App;
+export default App

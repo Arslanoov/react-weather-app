@@ -1,5 +1,5 @@
-import { v4 as uuid } from 'uuid';
-import NoteServiceInterface, { Note } from './noteService';
+import { v4 as uuid } from 'uuid'
+import NoteServiceInterface, { Note } from './noteService'
 
 export default class DummyNoteService implements NoteServiceInterface {
   private data: Array<Note> = [
@@ -26,34 +26,34 @@ export default class DummyNoteService implements NoteServiceInterface {
   ];
 
   getNotes(): Array<Note> {
-    return this.data;
+    return this.data
   }
 
   addNote(title: string, description: string): string {
-    const id = uuid();
+    const id = uuid()
 
     this.data.push({
       id,
       title,
       description,
-    });
+    })
 
-    return id;
+    return id
   }
 
   updateNote(id: string, title: string, description: string): void {
-    const idx: number = this.data.findIndex((note) => note.id === id);
+    const idx: number = this.data.findIndex((note) => note.id === id)
 
     if (this.data[idx]) {
       this.data[idx] = {
         id,
         title,
         description,
-      };
+      }
     }
   }
 
   removeNote(id: string): void {
-    this.data = this.data.filter((note) => note.id !== id);
+    this.data = this.data.filter((note) => note.id !== id)
   }
 }
