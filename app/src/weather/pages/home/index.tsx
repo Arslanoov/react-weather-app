@@ -4,7 +4,7 @@ import WeatherLayout from '../../layouts/weather-layout';
 
 const Home = () => (
   <WeatherLayout>
-    Home page
+    <div className="home">Home page</div>
   </WeatherLayout>
 );
 
