@@ -1,0 +1,13 @@
+{
+  "fixturesFolder": "tests/e2e/fixtures",
+  "integrationFolder": "tests/e2e/integration",
+  "pluginsFile": "tests/e2e/plugins/index.js",
+  "screenshotsFolder": "tests/e2e/screenshots",
+  "videosFolder": "tests/e2e/videos",
+  "supportFile": "tests/e2e/support/index.js",
+  "baseUrl": "http://localhost:3000",
+  "component": {
+    "testFiles": "tests/e2e/**/*.test.{js,ts,jsx,tsx}",
+    "componentFolder": "src"
+  }
+}

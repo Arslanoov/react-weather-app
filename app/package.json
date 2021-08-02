@@ -11,6 +11,8 @@
     "web-vitals": "^1.1.2"
   },
   "devDependencies": {
+    "@cypress/react": "^5.9.2",
+    "@cypress/webpack-dev-server": "^1.4.0",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
@@ -19,8 +21,10 @@
     "@types/react": "^17.0.15",
     "@types/react-dom": "^17.0.9",
     "@typescript-eslint/eslint-plugin": "^4.28.5",
+    "cypress": "^8.1.0",
     "dart-sass": "^1.25.0",
     "eslint-config-airbnb-typescript": "^12.3.1",
+    "eslint-plugin-cypress": "^2.11.3",
     "eslint-plugin-import": "^2.23.4",
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-react": "^7.24.0",
@@ -34,8 +38,9 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "test:unit": "react-scripts test",
+    "test:e2e": "npx cypress open",
     "lint:js": "npx eslint . --ext .js,.jsx,.ts,.tsx",
     "lint:js:fix": "npx eslint . --ext .js,.jsx,.ts,.tsx --fix",
     "lint:style": "npx stylelint \"**/*.{scss,sass,css}\" --ignore-path .gitignore"
