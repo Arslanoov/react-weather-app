@@ -4,19 +4,10 @@ module.exports = {
     project: './tsconfig.json',
   },
   rules: {
-    quotes: ['error', 'single'],
-    semi: ['error', 'never'],
-
-    'max-lines': ['error', { max: 200, skipBlankLines: true }],
-    'max-len': ['error', { code: 120 }],
-
-    'no-param-reassign': 'off',
     'react/prop-types': 'off',
-    'arrow-body-style': 'off',
-    'import/prefer-default-export': 'off',
-    '@typescript-eslint/semi': 'off',
+    'import/no-extraneous-dependencies': ['error', { 'devDependencies': true }],
   },
   ignorePatterns: [
-    '.eslintrc.js'
-  ],
-};
+    '.eslintrc.js',
+  ]
+}
