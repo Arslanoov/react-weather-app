@@ -3,11 +3,14 @@ import React from 'react';
 import { Layout, Menu } from 'antd';
 import { AppstoreOutlined, MailOutlined, SettingOutlined } from '@ant-design/icons';
 
+import './index.scss';
+
 const { SubMenu } = Menu;
 
 const Sidebar = () => (
-  <Layout.Sider>
+  <Layout.Sider className="sidebar">
     <Menu
+      className="sidebar__menu"
       defaultSelectedKeys={['1']}
       defaultOpenKeys={['sub1']}
       mode="inline"

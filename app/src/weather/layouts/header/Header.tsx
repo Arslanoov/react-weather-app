@@ -2,13 +2,14 @@ import React from 'react';
 
 import { Layout, Menu } from 'antd';
 
+import './index.scss';
+
 const Header = () => (
-  <Layout.Header>
-    <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']}>
-      {new Array(15).fill(null).map((_, index) => {
-        const key = index + 1;
-        return <Menu.Item key={key}>{`nav ${key}`}</Menu.Item>;
-      })}
+  <Layout.Header className="header">
+    <Menu mode="horizontal" defaultSelectedKeys={['1']}>
+      <Menu.Item key={1}>Item 1</Menu.Item>
+      <Menu.Item key={2}>Item 2</Menu.Item>
+      <Menu.Item key={3}>Item 3</Menu.Item>
     </Menu>
   </Layout.Header>
 );

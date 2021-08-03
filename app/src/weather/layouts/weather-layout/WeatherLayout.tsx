@@ -6,12 +6,16 @@ import Header from 'weather/layouts/header';
 import Footer from 'weather/layouts/footer';
 import Sidebar from 'weather/layouts/sidebar';
 
+import './index.scss';
+
 const WeatherLayout: React.FC = ({ children }) => (
-  <Layout>
+  <Layout className="weather-layout">
     <Header />
     <Layout>
       <Sidebar />
-      <Layout.Content style={{ padding: '10px 20px' }}>{children}</Layout.Content>
+      <Layout.Content className="weather-layout__content">
+        {children}
+      </Layout.Content>
     </Layout>
     <Footer />
   </Layout>
