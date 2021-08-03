@@ -1,7 +1,3 @@
-import React from 'react';
-
-const Test = () => (
-  <div>Test Page</div>
-);
+import Test from './Test';
 
 export default Test;
