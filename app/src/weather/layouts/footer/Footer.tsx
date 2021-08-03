@@ -2,8 +2,23 @@ import React from 'react';
 
 import { Layout } from 'antd';
 
-const Footer = () => (
-  <Layout.Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Layout.Footer>
-);
+import './index.scss';
+
+const Footer = () => {
+  const currentDate = new Date();
+
+  return (
+    <Layout.Footer className="footer">
+      <div className="footer__app">
+        Weather App ©
+        {' '}
+        {currentDate.getFullYear()}
+      </div>
+      <div className="footer__author">
+        Created by Arslanoov
+      </div>
+    </Layout.Footer>
+  );
+};
 
 export default Footer;
