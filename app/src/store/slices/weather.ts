@@ -1,5 +1,7 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from 'store';
+
+import { fetchCityRequest } from 'weather/api/city';
 
 interface WeatherState {
   city: string
@@ -13,14 +15,16 @@ const delay = (ms: number) => new Promise((res) => setTimeout(res, ms));
 
 export const fetchCity = createAsyncThunk('weather/fetchCity', async () => {
   await delay(2000);
-  return 'Other city';
+  const city = await fetchCityRequest();
+  console.log(city);
+  return city;
 });
 
 export const weatherSlice = createSlice({
   name: 'weather',
   initialState,
   reducers: {
-    setCity: (state, action) => {
+    setCity: (state: WeatherState, action: PayloadAction<string>) => {
       state.city = action.payload;
     },
   },
@@ -32,5 +36,7 @@ export const weatherSlice = createSlice({
 });
 
 export const citySelector = (state: RootState) => `City: ${state.weather.city}`;
+
+export const { setCity } = weatherSlice.actions;
 
 export default weatherSlice.reducer;
