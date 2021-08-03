@@ -2,21 +2,18 @@ import React from 'react';
 
 import { Layout } from 'antd';
 
-const {
-  Header,
-  Sider,
-  Content,
-  Footer,
-} = Layout;
+import Header from 'weather/layouts/header';
+import Footer from 'weather/layouts/footer';
+import Sidebar from 'weather/layouts/sidebar';
 
 const WeatherLayout: React.FC = ({ children }) => (
   <Layout>
-    <Sider>Sider</Sider>
+    <Header />
     <Layout>
-      <Header><div>Header</div></Header>
-      <Content>{children}</Content>
-      <Footer><div>Footer</div></Footer>
+      <Sidebar />
+      <Layout.Content style={{ padding: '10px 20px' }}>{children}</Layout.Content>
     </Layout>
+    <Footer />
   </Layout>
 );
 
