@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { RootState } from '../index';
+import { RootState } from 'store';
 
 interface WeatherState {
   city: string

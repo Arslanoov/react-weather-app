@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 
-import WeatherLayout from '../../layouts/weather-layout';
-import { AppDispatch, RootState } from '../../../store';
-import { citySelector, fetchCity as fetchCityAction } from '../../../store/slices/weather';
+import { AppDispatch, RootState } from 'store';
+import { citySelector, fetchCity as fetchCityAction } from 'store/slices/weather';
+
+import WeatherLayout from 'weather/layouts/weather-layout';
 
 type Props = ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps> & {};
 
