@@ -1,14 +1,20 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from 'store';
 
-import { fetchCityRequest } from 'weather/api/city';
+import { CurrentWeather } from 'interfaces/weather';
+
+import { getSavedCities } from 'storage/weatherStorage';
+
+import { fetchCityRequest, fetchCurrentWeatherByCity } from 'weather/api/city';
 
 interface WeatherState {
-  city: string
+  city: string,
+  savedWeather: CurrentWeather[],
 }
 
 const initialState: WeatherState = {
   city: 'Moscow',
+  savedWeather: [],
 };
 
 const delay = (ms: number) => new Promise((res) => setTimeout(res, ms));
@@ -18,6 +24,13 @@ export const fetchCity = createAsyncThunk('weather/fetchCity', async () => {
   const city = await fetchCityRequest();
   console.log(city);
   return city;
+});
+
+export const fetchSavedCitiesWeather = createAsyncThunk('weather/fetchCurrentWeatherByCity', async () => {
+  const cities: string[] = getSavedCities();
+  const forecast: CurrentWeather[] = await Promise.all(cities.map((city) => fetchCurrentWeatherByCity(city)));
+  console.log(forecast);
+  return forecast;
 });
 
 export const weatherSlice = createSlice({
@@ -32,10 +45,14 @@ export const weatherSlice = createSlice({
     [fetchCity.fulfilled.type]: (state, action) => {
       state.city = action.payload;
     },
+    [fetchSavedCitiesWeather.fulfilled.type]: (state, action) => {
+      state.savedWeather = action.payload;
+    },
   },
 });
 
 export const citySelector = (state: RootState) => `City: ${state.weather.city}`;
+export const savedWeatherSelector = (state: RootState) => state.weather.savedWeather;
 
 export const { setCity } = weatherSlice.actions;
 

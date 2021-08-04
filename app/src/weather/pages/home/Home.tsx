@@ -5,6 +5,7 @@ import { AppDispatch, RootState } from 'store';
 import { citySelector, fetchCity as fetchCityAction } from 'store/slices/weather';
 
 import WeatherLayout from 'weather/layouts/weather-layout';
+import SavedCitiesList from 'weather/components/container/saved-cities-list/SavedCitiesList';
 
 type Props = ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps> & {};
 
@@ -17,6 +18,7 @@ const Home: React.FC<Props> = ({ city, fetchCity }) => {
     <WeatherLayout>
       <div className="home">Home page</div>
       <div>{city}</div>
+      <SavedCitiesList />
     </WeatherLayout>
   );
 };
