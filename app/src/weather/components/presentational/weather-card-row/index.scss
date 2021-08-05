@@ -1,6 +1,7 @@
 .weather-card-row {
   display: flex;
   align-items: center;
+  position: relative;
   width: 100%;
 
   &__icon {
@@ -24,5 +25,11 @@
 
   &__description {
     margin-bottom: 0;
+  }
+
+  &__delete {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
   }
 }

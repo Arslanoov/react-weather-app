@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { Card } from 'antd';
+import { CloseOutlined } from '@ant-design/icons';
 
 import { CurrentWeather } from 'interfaces/weather';
 
@@ -10,11 +11,13 @@ import './index.scss';
 
 type Props = {
   data: CurrentWeather;
+  onDelete: (name: string) => void;
   className?: string;
 };
 
-const WeatherCardRow: React.FC<Props> = ({ data, className }) => (
+const WeatherCardRow: React.FC<Props> = ({ data, onDelete, className }) => (
   <Card.Grid className={`weather-card-row ${className}`}>
+    <CloseOutlined className="weather-card-row__delete" onClick={() => onDelete(data.name)} />
     <WeatherIcon className="weather-card-row__icon" icon={data.weather[0].icon} />
     <div className="weather-card-row__content">
       <div className="weather-card-row__left">
