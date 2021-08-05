@@ -9,7 +9,17 @@
 
   &__content {
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  &__city {
+    font-size: 1.2rem;
+  }
+
+  &__right {
+    font-size: 3rem;
   }
 
   &__description {

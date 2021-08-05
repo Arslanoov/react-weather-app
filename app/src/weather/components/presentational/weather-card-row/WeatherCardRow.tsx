@@ -17,8 +17,27 @@ const WeatherCardRow: React.FC<Props> = ({ data, className }) => (
   <Card.Grid className={`weather-card-row ${className}`}>
     <WeatherIcon className="weather-card-row__icon" icon={data.weather[0].icon} />
     <div className="weather-card-row__content">
-      <h3 className="weather-card-row__city">{data.name}</h3>
-      <p className="weather-card-row__description">This is the description</p>
+      <div className="weather-card-row__left">
+        <h3 className="weather-card-row__city">{data.name}</h3>
+        <p className="weather-card-row__description">
+          Feels like
+          {' '}
+          {Math.floor(data.main.feels_like)}
+          {' '}
+          C&deg;
+        </p>
+        <p>
+          Wind
+          {' '}
+          {data.wind.speed}
+          {' '}
+          m/s
+        </p>
+      </div>
+      <div className="weather-card-row__right">
+        {Math.floor(data.main.temp)}
+        &deg;
+      </div>
     </div>
   </Card.Grid>
 );

@@ -6,6 +6,7 @@ const api = axios.create({
   withCredentials: true,
   params: {
     appid: process.env.REACT_APP_API_TOKEN,
+    units: 'metric',
   },
 });
 
