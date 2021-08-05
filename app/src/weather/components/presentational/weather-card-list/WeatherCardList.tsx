@@ -12,8 +12,8 @@ type WeatherCardListProps = {
 };
 
 const WeatherCardList: React.FC<WeatherCardListProps> = ({ items }) => (
-  <Card>
-    {items.map((item) => <WeatherCardRow key={item.id} data={item} />)}
+  <Card className="weather-card-list">
+    {items.map((item) => <WeatherCardRow className="weather-card-list__item" key={item.id} data={item} />)}
   </Card>
 );
 
