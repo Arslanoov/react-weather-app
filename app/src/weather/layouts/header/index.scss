@@ -3,18 +3,21 @@
 .header {
   display: flex;
   align-items: center;
+  padding: 0;
   background: $header-background;
-}
 
-.trigger {
-  padding: 0 1.4rem;
-  font-size: 1rem;
-  line-height: 4rem;
-  cursor: pointer;
-  transition: color 0.3s;
+  &__title {
+    margin-bottom: 0;
+  }
 
-  &:hover {
-    color: #1890ff;
+  &__trigger {
+    padding: 0 1.4rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: color 0.3s;
+
+    &:hover {
+      color: #1890ff;
+    }
   }
 }
-

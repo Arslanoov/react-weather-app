@@ -6,13 +6,9 @@ import { MenuUnfoldOutlined } from '@ant-design/icons';
 import './index.scss';
 
 const Header = () => (
-  <Layout.Header className="header" style={{ padding: 0 }}>
-    {React.createElement(MenuUnfoldOutlined, {
-      className: 'trigger',
-      /* onClick: this.toggle, */
-    })}
-
-    <h1>Weather App</h1>
+  <Layout.Header className="header">
+    <MenuUnfoldOutlined className="header__trigger" onClick={() => {}} />
+    <h1 className="header__title">Weather App</h1>
   </Layout.Header>
 );
 
