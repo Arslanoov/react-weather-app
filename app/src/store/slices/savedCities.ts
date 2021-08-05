@@ -1,30 +1,21 @@
-import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { RootState } from 'store';
 
 import { CurrentWeather } from 'interfaces/weather';
 
 import { getSavedCities } from 'storage/weatherStorage';
 
-import { fetchCityRequest, fetchCurrentWeatherByCity } from 'weather/api/city';
+import { fetchCurrentWeatherByCity } from 'weather/api/city';
 
 interface WeatherState {
-  city: string,
+  isEditMode: boolean,
   savedWeather: CurrentWeather[],
 }
 
 const initialState: WeatherState = {
-  city: 'Moscow',
+  isEditMode: false,
   savedWeather: [],
 };
-
-const delay = (ms: number) => new Promise((res) => setTimeout(res, ms));
-
-export const fetchCity = createAsyncThunk('weather/fetchCity', async () => {
-  await delay(2000);
-  const city = await fetchCityRequest();
-  console.log(city);
-  return city;
-});
 
 export const fetchSavedCitiesWeather = createAsyncThunk('weather/fetchCurrentWeatherByCity', async () => {
   const cities: string[] = getSavedCities();
@@ -37,23 +28,20 @@ export const weatherSlice = createSlice({
   name: 'weather',
   initialState,
   reducers: {
-    setCity: (state: WeatherState, action: PayloadAction<string>) => {
-      state.city = action.payload;
+    toggleEditMode: (state: WeatherState) => {
+      state.isEditMode = !state.isEditMode;
     },
   },
   extraReducers: {
-    [fetchCity.fulfilled.type]: (state, action) => {
-      state.city = action.payload;
-    },
     [fetchSavedCitiesWeather.fulfilled.type]: (state, action) => {
       state.savedWeather = action.payload;
     },
   },
 });
 
-export const citySelector = (state: RootState) => `City: ${state.weather.city}`;
-export const savedWeatherSelector = (state: RootState) => state.weather.savedWeather;
+export const isEditModeSelector = (state: RootState) => state.savedCities.isEditMode;
+export const savedWeatherSelector = (state: RootState) => state.savedCities.savedWeather;
 
-export const { setCity } = weatherSlice.actions;
+export const { toggleEditMode } = weatherSlice.actions;
 
 export default weatherSlice.reducer;

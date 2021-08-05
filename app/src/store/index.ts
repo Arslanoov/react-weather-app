@@ -1,10 +1,10 @@
 import { configureStore, Action, ThunkAction } from '@reduxjs/toolkit';
 
-import { weatherSlice } from './slices/weather';
+import { weatherSlice } from './slices/savedCities';
 
 export const store = configureStore({
   reducer: {
-    weather: weatherSlice.reducer,
+    savedCities: weatherSlice.reducer,
   },
 });
 

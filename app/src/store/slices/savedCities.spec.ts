@@ -1,7 +1,7 @@
 import { store } from 'store';
 
 import * as api from 'weather/api/city';
-import reducer, { setCity, fetchCity } from './weather';
+import reducer, { setCity, fetchCity } from './savedCities';
 
 test('should set city', () => {
   expect(reducer({

@@ -2,8 +2,7 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import { AppDispatch, RootState } from 'store';
-
-import { fetchSavedCitiesWeather, savedWeatherSelector } from 'store/slices/weather';
+import { fetchSavedCitiesWeather, savedWeatherSelector } from 'store/slices/savedCities';
 
 import WeatherCardList from 'weather/components/presentational/weather-card-list';
 
