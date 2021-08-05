@@ -1,10 +1,12 @@
 import { configureStore, Action, ThunkAction } from '@reduxjs/toolkit';
 
 import { weatherSlice } from './slices/savedCities';
+import { sidebarSlice } from './slices/sidebar';
 
 export const store = configureStore({
   reducer: {
     savedCities: weatherSlice.reducer,
+    sidebar: sidebarSlice.reducer,
   },
 });
 

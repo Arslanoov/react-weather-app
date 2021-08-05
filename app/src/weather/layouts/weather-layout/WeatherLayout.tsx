@@ -1,4 +1,8 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
+import { AppDispatch, RootState } from 'store';
+import { isCollapsedSidebarSelector, toggleSidebar as toggleSidebarAction } from 'store/slices/sidebar';
 
 import { Layout } from 'antd';
 
@@ -8,11 +12,13 @@ import Sidebar from 'weather/layouts/sidebar';
 
 import './index.scss';
 
-const WeatherLayout: React.FC = ({ children }) => (
+type Props = ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps> & {};
+
+const WeatherLayout: React.FC<Props> = ({ toggleSidebar, isCollapsed, children }) => (
   <Layout className="weather-layout">
-    <Sidebar />
+    <Sidebar isCollapsed={isCollapsed} />
     <Layout>
-      <Header />
+      <Header toggleSidebar={toggleSidebar} />
       <Layout.Content className="weather-layout__content">
         {children}
       </Layout.Content>
@@ -21,4 +27,15 @@ const WeatherLayout: React.FC = ({ children }) => (
   </Layout>
 );
 
-export default WeatherLayout;
+const mapStateToProps = (state: RootState) => ({
+  isCollapsed: isCollapsedSidebarSelector(state),
+});
+
+const mapDispatchToProps = (dispatch: AppDispatch) => ({
+  toggleSidebar: () => dispatch(toggleSidebarAction()),
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(WeatherLayout);
