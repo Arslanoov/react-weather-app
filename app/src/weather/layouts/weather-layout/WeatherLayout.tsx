@@ -10,14 +10,14 @@ import './index.scss';
 
 const WeatherLayout: React.FC = ({ children }) => (
   <Layout className="weather-layout">
-    <Header />
+    <Sidebar />
     <Layout>
-      <Sidebar />
+      <Header />
       <Layout.Content className="weather-layout__content">
         {children}
       </Layout.Content>
+      <Footer />
     </Layout>
-    <Footer />
   </Layout>
 );
 

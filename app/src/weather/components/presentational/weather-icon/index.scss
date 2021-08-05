@@ -1,0 +1,12 @@
+.weather-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 4rem;
+  height: 4rem;
+
+  &__item {
+    max-width: 4rem;
+    max-height: 3rem;
+  }
+}

@@ -1,0 +1,12 @@
+.ant-card-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.weather-card-list {
+  &__item {
+    &:not(:last-of-type) {
+      margin-bottom: 1rem;
+    }
+  }
+}

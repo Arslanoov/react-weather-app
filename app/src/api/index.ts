@@ -2,8 +2,11 @@ import axios from 'axios';
 import withInterceptors from './withInterceptors';
 
 const api = axios.create({
-  baseURL: process.env.BASE_API_URL,
+  baseURL: process.env.REACT_APP_API_URL,
   withCredentials: true,
+  params: {
+    appid: process.env.REACT_APP_API_TOKEN,
+  },
 });
 
 export default withInterceptors(api);

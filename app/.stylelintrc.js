@@ -3,7 +3,7 @@ module.exports = {
   plugins: ['stylelint-scss'],
   rules: {
     'max-empty-lines': 2,
-    'unit-whitelist': ['em', 'rem', 'vh', 'vw', '%'],
+    'unit-whitelist': ['em', 'rem', 'vh', 'vw', '%', 's'],
     // 'at-rule-no-unknown': null,
     // 'scss/at-rule-no-unknown': true
   }
