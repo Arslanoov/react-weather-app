@@ -1,7 +1,15 @@
+@import "assets/styles/abstracts/variables";
+
 .sidebar {
   &,
   &__menu {
     // TODO: Change calc
     min-height: calc(100vh - 5.75rem - 4rem);
+  }
+
+  &__logo {
+    height: 2rem;
+    margin: 1rem;
+    background: rgba($white, 0.3);
   }
 }

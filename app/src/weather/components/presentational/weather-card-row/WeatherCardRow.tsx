@@ -4,9 +4,9 @@ import { Card, Avatar } from 'antd';
 
 import { CurrentWeather } from 'interfaces/weather';
 
-interface Props {
+type Props = {
   data: CurrentWeather
-}
+};
 
 const WeatherCardRow: React.FC<Props> = ({ data }) => (
   <Card.Grid

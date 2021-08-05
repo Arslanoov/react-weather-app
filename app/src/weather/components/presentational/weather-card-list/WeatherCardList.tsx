@@ -7,9 +7,9 @@ import WeatherCardRow from 'weather/components/presentational/weather-card-row';
 
 import './index.scss';
 
-interface WeatherCardListProps {
+type WeatherCardListProps = {
   items: CurrentWeather[]
-}
+};
 
 const WeatherCardList: React.FC<WeatherCardListProps> = ({ items }) => (
   <Card>
