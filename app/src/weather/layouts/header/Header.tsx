@@ -5,9 +5,13 @@ import { MenuUnfoldOutlined } from '@ant-design/icons';
 
 import './index.scss';
 
-const Header = () => (
+type Props = {
+  toggleSidebar: () => void;
+};
+
+const Header: React.FC<Props> = ({ toggleSidebar }) => (
   <Layout.Header className="header">
-    <MenuUnfoldOutlined className="header__trigger" onClick={() => {}} />
+    <MenuUnfoldOutlined className="header__trigger" onClick={() => toggleSidebar()} />
     <h1 className="header__title">Weather App</h1>
   </Layout.Header>
 );

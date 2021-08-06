@@ -7,12 +7,12 @@ import { WeatherIcon as WeatherIconInterface } from 'interfaces/weather';
 import './index.scss';
 
 type Props = {
-  icon: WeatherIconInterface;
   className?: string;
+  icon: WeatherIconInterface;
 };
 
-const WeatherIcon: React.FC<Props> = ({ icon, className }) => (
-  <div className={`weather-icon ${className ?? ''}`}>
+const WeatherIcon: React.FC<Props> = ({ icon, className = '' }) => (
+  <div className={`weather-icon ${className}`}>
     <img className="weather-icon__item" src={mapWeatherIcon(icon)} alt="" />
   </div>
 );

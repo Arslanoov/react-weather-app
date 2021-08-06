@@ -12,6 +12,7 @@ module.exports = {
     'react/prop-types': 'off',
     'import/no-cycle': 'off',
     'import/prefer-default-export': 'off',
+    '@typescript-eslint/return-await': 'off',
   },
   ignorePatterns: [
     '.eslintrc.js',

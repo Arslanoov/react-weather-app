@@ -1,6 +1,7 @@
 .weather-card-row {
   display: flex;
   align-items: center;
+  position: relative;
   width: 100%;
 
   &__icon {
@@ -9,10 +10,26 @@
 
   &__content {
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  &__city {
+    font-size: 1.2rem;
+  }
+
+  &__right {
+    font-size: 3rem;
   }
 
   &__description {
     margin-bottom: 0;
+  }
+
+  &__delete {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
   }
 }

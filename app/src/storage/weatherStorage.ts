@@ -16,3 +16,9 @@ export const saveCity = (name: string): void => {
   cities.push(name);
   saveCities([...Array.from(new Set(cities))]);
 };
+
+export const removeCity = (name: string): void => {
+  const cities = getSavedCities();
+  const newCitiesList = cities.filter((city) => city !== name);
+  saveCities([...Array.from(new Set(newCitiesList))]);
+};
