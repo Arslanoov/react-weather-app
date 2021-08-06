@@ -19,7 +19,8 @@ const initialState: WeatherState = {
 
 export const fetchSavedCitiesWeather = createAsyncThunk('weather/fetchCurrentWeatherByCity', async () => {
   const cities: string[] = getSavedCities();
-  return await Promise.all(cities.map((city) => fetchCurrentWeatherByCity(city)));
+  const promises = cities.map((city) => fetchCurrentWeatherByCity(city));
+  return await Promise.all(promises);
 });
 
 export const addSavedCity = createAsyncThunk('weather/addSavedCity', async (name: string) => {
