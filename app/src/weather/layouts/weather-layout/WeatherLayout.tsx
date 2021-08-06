@@ -14,12 +14,14 @@ import './index.scss';
 
 type Props = ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps> & {};
 
-const WeatherLayout: React.FC<Props> = ({ toggleSidebar, isCollapsed, children }) => (
+const WeatherLayout: React.FC<Props> = ({ toggleSidebar, isSidebarCollapsed, children }) => (
   <Layout className="weather-layout">
-    <Sidebar isCollapsed={isCollapsed} />
+    <Sidebar isCollapsed={isSidebarCollapsed} />
     <Layout>
       <Header toggleSidebar={toggleSidebar} />
-      <Layout.Content className="weather-layout__content">
+      <Layout.Content
+        className={`weather-layout__content ${isSidebarCollapsed ? '' : 'weather-layout__content_collapsed'}`}
+      >
         {children}
       </Layout.Content>
       <Footer />
@@ -28,7 +30,7 @@ const WeatherLayout: React.FC<Props> = ({ toggleSidebar, isCollapsed, children }
 );
 
 const mapStateToProps = (state: RootState) => ({
-  isCollapsed: isCollapsedSidebarSelector(state),
+  isSidebarCollapsed: isCollapsedSidebarSelector(state),
 });
 
 const mapDispatchToProps = (dispatch: AppDispatch) => ({
