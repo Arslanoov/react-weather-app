@@ -6,12 +6,16 @@ import weatherData from 'tests/dummy/weatherData';
 import WeatherCardRow from './WeatherCardRow';
 
 describe('<WeatherCardRow />', () => {
-  test('renders correctly with props', () => {
-    const onDeleteSpy = jest.fn();
-    const { container } = render(<WeatherCardRow data={weatherData} onDelete={onDeleteSpy} />);
+  it('renders correctly', () => {
+    render(<WeatherCardRow data={weatherData} onDelete={() => {}} />);
 
     const cityName = screen.getByText(weatherData.name);
     expect(cityName).toBeInTheDocument();
+  });
+
+  test('deleting item', () => {
+    const onDeleteSpy = jest.fn();
+    const { container } = render(<WeatherCardRow data={weatherData} onDelete={onDeleteSpy} />);
 
     const close = container.querySelector('.weather-card-row__delete');
 

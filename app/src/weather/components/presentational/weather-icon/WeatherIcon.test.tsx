@@ -5,7 +5,7 @@ import WeatherIcon from 'weather/components/presentational/weather-icon/WeatherI
 import { mapWeatherIcon } from 'helpers/mapper/weatherIconMapper';
 
 describe('<WeatherIcon />', () => {
-  test('render correctly', () => {
+  it('renders correctly', () => {
     const icon = '01d';
     const additionalClass = 'additional classes';
     const { container } = render(<WeatherIcon className={additionalClass} icon={icon} />);
