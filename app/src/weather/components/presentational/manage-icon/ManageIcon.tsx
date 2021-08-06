@@ -10,7 +10,7 @@ type Props = {
 };
 
 const ManageIcon: React.FC<Props> = ({ onToggle, className = '' }) => (
-  <PlusOutlined className={`manage-icon ${className}`} onClick={() => onToggle()} />
+  <PlusOutlined role="link" className={`manage-icon ${className}`} onClick={() => onToggle()} />
 );
 
 export default ManageIcon;

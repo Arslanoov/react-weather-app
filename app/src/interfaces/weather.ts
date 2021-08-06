@@ -56,14 +56,14 @@ export interface MainWeatherInfo {
   temp_max: number,
   pressure: number,
   humidity: number,
-  sea_level: number,
-  grnd_level: number
+  sea_level?: number,
+  grnd_level?: number
 }
 
 export interface WindInfo {
   speed: number,
   deg: number,
-  gust: number
+  gust?: number
 }
 
 export interface CloudsInfo {
