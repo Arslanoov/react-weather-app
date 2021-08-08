@@ -4,11 +4,16 @@ import ApiError from 'errors/api';
 
 import { CurrentWeather } from 'interfaces/weather';
 
-export const fetchCurrentWeatherByCity = async (city: string): Promise<CurrentWeather> => {
+export const fetchCurrentWeather = async (params: {
+  [key: string]: string,
+}): Promise<CurrentWeather> => {
   try {
     const { data } = await api.get<CurrentWeather>('/weather', {
       params: {
-        q: city,
+        q: params.city,
+        lat: params.lat,
+        lon: params.lon,
+        zip: params.code,
       },
     });
     return data;
@@ -16,3 +21,21 @@ export const fetchCurrentWeatherByCity = async (city: string): Promise<CurrentWe
     throw new ApiError(e.getMessage());
   }
 };
+
+export const fetchCurrentWeatherByCity = async (city: string): Promise<CurrentWeather> => fetchCurrentWeather({
+  city,
+});
+
+export const fetchCurrentWeatherByCoordinates = async (
+  lat: string,
+  lot: string,
+): Promise<CurrentWeather> => fetchCurrentWeather({
+  lat,
+  lot,
+});
+
+export const fetchCurrentWeatherByZipCode = async (
+  code: string,
+): Promise<CurrentWeather> => fetchCurrentWeather({
+  code,
+});
