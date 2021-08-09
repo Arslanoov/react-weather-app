@@ -1,6 +1,6 @@
 import { CurrentWeather } from 'interfaces/weather';
 
-const getTime = (time: number, offset: number) => (new Date((time + offset) * 1000)).toISOString().substr(11, 8);
+const getTime = (time: number, offset: number) => (new Date((time + offset) * 1000)).toISOString().substr(11, 5);
 
 export const getSunrise = (data: CurrentWeather) => getTime(data.sys.sunrise, data.timezone);
 

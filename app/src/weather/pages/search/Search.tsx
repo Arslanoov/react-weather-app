@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import { AppDispatch, RootState } from 'store';
 import { searchCity, searchErrorSelector, searchItemSelector } from 'store/slices/search';
+import { addSavedCity } from 'store/slices/savedCities';
 
 import { SearchForm } from 'interfaces/forms/searchForm';
 import { SearchType } from 'interfaces/search';
@@ -16,7 +17,9 @@ import './index.scss';
 
 type Props = ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps> & {};
 
-const Search: React.FC<Props> = ({ searchItem, search, error }) => (
+const Search: React.FC<Props> = ({
+  searchItem, search, error, add,
+}) => (
   <WeatherLayout>
     <div className="search">
       <div className="search__content">
@@ -28,6 +31,9 @@ const Search: React.FC<Props> = ({ searchItem, search, error }) => (
               className="search__item search__item_expanded"
               data={searchItem}
               canDelete={false}
+              onAdd={add}
+              canAdd
+              extended
             />
           )}
           <Error message={error} />
@@ -47,6 +53,7 @@ const mapDispatchToProps = (dispatch: AppDispatch) => ({
     form,
     type,
   })),
+  add: (name: string) => dispatch(addSavedCity(name)),
 });
 
 export default connect(

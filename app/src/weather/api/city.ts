@@ -28,10 +28,10 @@ export const fetchCurrentWeatherByCity = async (city: string): Promise<CurrentWe
 
 export const fetchCurrentWeatherByCoordinates = async (
   lat: string,
-  lot: string,
+  lon: string,
 ): Promise<CurrentWeather> => fetchCurrentWeather({
   lat,
-  lot,
+  lon,
 });
 
 export const fetchCurrentWeatherByZipCode = async (

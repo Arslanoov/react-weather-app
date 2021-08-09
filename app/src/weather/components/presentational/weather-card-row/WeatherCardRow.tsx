@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Card } from 'antd';
-import { CloseOutlined } from '@ant-design/icons';
+import { CloseOutlined, PlusOutlined, AppstoreOutlined } from '@ant-design/icons';
 
 import { CurrentWeather } from 'interfaces/weather';
 
@@ -13,7 +13,9 @@ import './index.scss';
 
 type Props = {
   data: CurrentWeather;
+  onAdd?: (name: string) => void;
   onDelete?: (name: string) => void;
+  canAdd?: boolean;
   canDelete?: boolean;
   className?: string;
   extended?: boolean;
@@ -21,8 +23,10 @@ type Props = {
 
 const WeatherCardRow: React.FC<Props> = ({
   data,
+  onAdd,
   onDelete,
   className,
+  canAdd = false,
   canDelete = true,
   extended = false,
 }) => (
@@ -52,15 +56,42 @@ const WeatherCardRow: React.FC<Props> = ({
           m/s
         </p>
       </div>
-      <div className="weather-card-row__right">
+      <div className="weather-card-row__temp">
         {Math.floor(data.main.temp)}
         &deg;
+        {extended && (
+          <div className="weather-card-row__temp-minmax">
+            {Math.floor(data.main.temp_min)}
+            &deg;
+            /
+            {' '}
+            {Math.floor(data.main.temp_max)}
+            &deg;
+          </div>
+        )}
       </div>
-      <div>
-        {getSunrise(data)}
-        <br />
-        {getSunset(data)}
-      </div>
+      {extended && (
+        <>
+          <div className="weather-card-row__sun">
+            <div className="weather-card-row__sunrise">
+              <img className="weather-card-row__sun-icon" src="/img/icons/weather/sun/sunrise.svg" alt="" />
+              {getSunrise(data)}
+            </div>
+            <div className="weather-card-row__sunset">
+              <img className="weather-card-row__sun-icon" src="/img/icons/weather/sun/sunset.svg" alt="" />
+              {getSunset(data)}
+            </div>
+          </div>
+          <div className="weather-card-row__actions">
+            {
+              canAdd
+              && onAdd
+              && <PlusOutlined onClick={() => onAdd(data.name)} className="weather-card-row__action" />
+            }
+            <AppstoreOutlined className="weather-card-row__action" />
+          </div>
+        </>
+      )}
     </div>
   </Card.Grid>
 );
