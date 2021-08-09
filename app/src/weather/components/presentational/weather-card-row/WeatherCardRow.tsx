@@ -5,19 +5,34 @@ import { CloseOutlined } from '@ant-design/icons';
 
 import { CurrentWeather } from 'interfaces/weather';
 
+import { getSunrise, getSunset } from 'helpers/time';
+
 import WeatherIcon from 'weather/components/presentational/weather-icon';
 
 import './index.scss';
 
 type Props = {
   data: CurrentWeather;
-  onDelete: (name: string) => void;
+  onDelete?: (name: string) => void;
+  canDelete?: boolean;
   className?: string;
+  extended?: boolean;
 };
 
-const WeatherCardRow: React.FC<Props> = ({ data, onDelete, className }) => (
+const WeatherCardRow: React.FC<Props> = ({
+  data,
+  onDelete,
+  className,
+  canDelete = true,
+  extended = false,
+}) => (
   <Card.Grid className={`weather-card-row ${className}`}>
-    <CloseOutlined className="weather-card-row__delete" onClick={() => onDelete(data.name)} />
+    {
+      canDelete
+      && onDelete
+      && <CloseOutlined className="weather-card-row__delete" onClick={() => onDelete(data.name)} />
+    }
+    {extended}
     <WeatherIcon className="weather-card-row__icon" icon={data.weather[0].icon} />
     <div className="weather-card-row__content">
       <div className="weather-card-row__left">
@@ -40,6 +55,11 @@ const WeatherCardRow: React.FC<Props> = ({ data, onDelete, className }) => (
       <div className="weather-card-row__right">
         {Math.floor(data.main.temp)}
         &deg;
+      </div>
+      <div>
+        {getSunrise(data)}
+        <br />
+        {getSunset(data)}
       </div>
     </div>
   </Card.Grid>

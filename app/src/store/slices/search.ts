@@ -10,13 +10,16 @@ import {
   fetchCurrentWeatherByCoordinates,
   fetchCurrentWeatherByZipCode,
 } from 'weather/api/city';
+import ApiError from 'errors/api';
 
 interface SearchState {
   searchItem: CurrentWeather | null,
+  error: string | null,
 }
 
 const initialState: SearchState = {
   searchItem: null,
+  error: null,
 };
 
 export const searchCity = createAsyncThunk('search/searchCity', async (payload: {
@@ -45,8 +48,14 @@ export const searchSlice = createSlice({
   extraReducers: {
     [searchCity.fulfilled.type]: (state: SearchState, action: PayloadAction<CurrentWeather>) => {
       state.searchItem = action.payload;
+      state.error = null;
+    },
+    [searchCity.rejected.type]: (state: SearchState, response: { error: ApiError }) => {
+      state.searchItem = null;
+      state.error = response.error.message;
     },
   },
 });
 
 export const searchItemSelector = (state: RootState) => state.search.searchItem;
+export const searchErrorSelector = (state: RootState) => state.search.error;

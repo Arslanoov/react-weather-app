@@ -18,7 +18,7 @@ export const fetchCurrentWeather = async (params: {
     });
     return data;
   } catch (e) {
-    throw new ApiError(e.getMessage());
+    throw new ApiError(e.response.data?.message);
   }
 };
 
