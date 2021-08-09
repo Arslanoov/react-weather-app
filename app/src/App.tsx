@@ -9,6 +9,7 @@ import 'antd/dist/antd.css';
 import './assets/styles/main.scss';
 
 const Home = React.lazy(() => import('./weather/pages/home'));
+const Search = React.lazy(() => import('./weather/pages/search'));
 
 const App = () => (
   <Router>
@@ -17,6 +18,11 @@ const App = () => (
         <Route
           path="/"
           component={Home}
+          exact
+        />
+        <Route
+          path="/search"
+          component={Search}
           exact
         />
       </Switch>

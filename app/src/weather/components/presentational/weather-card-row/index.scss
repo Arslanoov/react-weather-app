@@ -1,3 +1,6 @@
+@import "assets/styles/abstracts/variables";
+@import "assets/styles/abstracts/mixins";
+
 .weather-card-row {
   display: flex;
   align-items: center;
@@ -13,6 +16,10 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
+
+    @include breakpoint-to($mobile) {
+      flex-direction: column;
+    }
   }
 
   &__city {
