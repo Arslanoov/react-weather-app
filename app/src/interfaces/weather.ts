@@ -70,6 +70,10 @@ export interface CloudsInfo {
   all: number
 }
 
+export interface RainInfo {
+  '1h': string
+}
+
 export interface OtherInformation {
   type: number,
   id: number,
@@ -86,6 +90,7 @@ export interface CurrentWeather {
   visibility: number,
   wind: WindInfo,
   clouds: CloudsInfo,
+  rain?: RainInfo,
   dt: number,
   sys: OtherInformation,
   timezone: number,

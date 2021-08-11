@@ -24,14 +24,63 @@
 
   &__city {
     font-size: 1.2rem;
+
+    @include breakpoint-to($mobile) {
+      font-weight: $bold;
+    }
   }
 
-  &__right {
+  &__temp {
     font-size: 3rem;
+
+    &-minmax {
+      font-size: 1.5rem;
+    }
   }
 
   &__description {
     margin-bottom: 0;
+  }
+
+  &__sun {
+    display: flex;
+    align-items: center;
+
+    &rise {
+      margin-right: 1rem;
+    }
+
+    &rise,
+    &set {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    &-icon {
+      width: 4rem;
+    }
+  }
+
+  &__cloud {
+    width: 1.5rem;
+    margin-right: .2rem;
+  }
+
+  &__actions {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__action {
+    font-size: 1.2rem;
+    color: $black;
+
+    @include pointer-on-hover();
+
+    &:first-of-type {
+      margin-bottom: 1rem;
+    }
   }
 
   &__delete {

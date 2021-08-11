@@ -30,8 +30,6 @@ const CityFindForm: React.FC<Props> = ({ onSubmit }) => {
       zipCode: '',
     },
     onSubmit(values: SearchForm) {
-      console.log('values', values);
-      console.log('currentTab', currentTab);
       onSubmit(values, currentTab);
     },
   });

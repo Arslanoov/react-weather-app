@@ -7,48 +7,48 @@ import { getSavedCities, removeCity, saveCity } from 'storage/weatherStorage';
 
 import { fetchCurrentWeatherByCity } from 'weather/api/city';
 
-interface WeatherState {
+interface SavedCitiesState {
   isEditMode: boolean,
   savedWeather: CurrentWeather[],
 }
 
-const initialState: WeatherState = {
+const initialState: SavedCitiesState = {
   isEditMode: false,
   savedWeather: [],
 };
 
-export const fetchSavedCitiesWeather = createAsyncThunk('weather/fetchCurrentWeatherByCity', async () => {
+export const fetchSavedCitiesWeather = createAsyncThunk('savedCities/fetchCurrentWeatherByCity', async () => {
   const cities: string[] = getSavedCities();
   const promises = cities.map((city) => fetchCurrentWeatherByCity(city));
   return await Promise.all(promises);
 });
 
-export const addSavedCity = createAsyncThunk('weather/addSavedCity', async (name: string) => {
+export const addSavedCity = createAsyncThunk('savedCities/addSavedCity', async (name: string) => {
   saveCity(name);
   return await fetchCurrentWeatherByCity(name);
 });
 
-export const removeSavedCity = createAsyncThunk('weather/removedSavedCity', (name: string) => {
+export const removeSavedCity = createAsyncThunk('savedCities/removedSavedCity', (name: string) => {
   removeCity(name);
   return name;
 });
 
-export const weatherSlice = createSlice({
-  name: 'weather',
+export const savedCitiesSlice = createSlice({
+  name: 'savedCities',
   initialState,
   reducers: {
-    toggleEditMode: (state: WeatherState) => {
+    toggleEditMode: (state: SavedCitiesState) => {
       state.isEditMode = !state.isEditMode;
     },
   },
   extraReducers: {
-    [fetchSavedCitiesWeather.fulfilled.type]: (state: WeatherState, action: PayloadAction<CurrentWeather[]>) => {
+    [fetchSavedCitiesWeather.fulfilled.type]: (state: SavedCitiesState, action: PayloadAction<CurrentWeather[]>) => {
       state.savedWeather = action.payload;
     },
-    [addSavedCity.fulfilled.type]: (state: WeatherState, action: PayloadAction<CurrentWeather>) => {
+    [addSavedCity.fulfilled.type]: (state: SavedCitiesState, action: PayloadAction<CurrentWeather>) => {
       state.savedWeather.push(action.payload);
     },
-    [removeSavedCity.fulfilled.type]: (state: WeatherState, action: PayloadAction<string>) => {
+    [removeSavedCity.fulfilled.type]: (state: SavedCitiesState, action: PayloadAction<string>) => {
       state.savedWeather = state.savedWeather.filter((weather) => weather.name !== action.payload);
     },
   },
@@ -57,6 +57,6 @@ export const weatherSlice = createSlice({
 export const isEditModeSelector = (state: RootState) => state.savedCities.isEditMode;
 export const savedWeatherSelector = (state: RootState) => state.savedCities.savedWeather;
 
-export const { toggleEditMode } = weatherSlice.actions;
+export const { toggleEditMode } = savedCitiesSlice.actions;
 
-export default weatherSlice.reducer;
+export default savedCitiesSlice.reducer;
