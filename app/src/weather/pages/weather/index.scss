@@ -1,8 +1,14 @@
 .weather {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 
-  &__current {
-    width: 70%;
+  &__current,
+  &__forecast {
+    width: 80%;
+  }
+
+  &__forecast {
+    margin-top: 1.5rem;
   }
 }

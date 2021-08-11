@@ -1,0 +1,19 @@
+@import "assets/styles/abstracts/variables";
+
+.forecast-card-row {
+  .ant-list-item-main {
+    display: flex !important;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__title {
+    font-weight: $bold;
+  }
+
+  &__temp {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+}
