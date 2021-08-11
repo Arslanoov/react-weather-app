@@ -3,6 +3,7 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
+  Redirect,
 } from 'react-router-dom';
 
 import 'antd/dist/antd.css';
@@ -11,10 +12,11 @@ import './assets/styles/main.scss';
 const Home = React.lazy(() => import('./weather/pages/home'));
 const Search = React.lazy(() => import('./weather/pages/search'));
 const Weather = React.lazy(() => import('./weather/pages/weather'));
+const NotFound = React.lazy(() => import('./weather/pages/not-found'));
 
 const App = () => (
   <Router>
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<></>}>
       <Switch>
         <Route
           path="/"
@@ -34,6 +36,14 @@ const App = () => (
           }}
           exact
         />
+        <Route
+          path="/not-found"
+          component={NotFound}
+          exact
+        />
+        <Route>
+          <Redirect to="/not-found" />
+        </Route>
       </Switch>
     </Suspense>
   </Router>
