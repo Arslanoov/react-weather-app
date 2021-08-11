@@ -30,8 +30,17 @@
     }
   }
 
+  &__clouds {
+    display: flex;
+    justify-content: center;
+  }
+
   &__temp {
     font-size: 3rem;
+
+    @include breakpoint-to($mobile) {
+      margin-top: 1rem;
+    }
 
     &-minmax {
       font-size: 1.5rem;
@@ -45,6 +54,10 @@
   &__sun {
     display: flex;
     align-items: center;
+
+    @include breakpoint-to($mobile) {
+      margin-top: 1rem;
+    }
 
     &rise {
       margin-right: 1rem;
@@ -62,6 +75,12 @@
     }
   }
 
+  &__humidity {
+    @include breakpoint-to($mobile) {
+      margin-top: 1rem;
+    }
+  }
+
   &__cloud {
     width: 1.5rem;
     margin-right: .2rem;
@@ -70,6 +89,17 @@
   &__actions {
     display: flex;
     flex-direction: column;
+
+    @include breakpoint-to($mobile) {
+      position: absolute;
+      top: 3rem;
+      left: 1.45rem;
+    }
+
+    @include breakpoint-to($mobile-sm) {
+      top: 2rem;
+      left: 1.5rem;
+    }
   }
 
   &__action {
@@ -86,6 +116,6 @@
   &__delete {
     position: absolute;
     top: 1rem;
-    right: 1rem;
+    left: 1.6rem;
   }
 }

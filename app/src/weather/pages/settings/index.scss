@@ -1,0 +1,7 @@
+.settings {
+  &__item {
+    &:not(:last-of-type) {
+      margin-bottom: 1.5rem;
+    }
+  }
+}

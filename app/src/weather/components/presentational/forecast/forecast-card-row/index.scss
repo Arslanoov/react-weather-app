@@ -1,0 +1,26 @@
+@import "assets/styles/abstracts/variables";
+@import "assets/styles/abstracts/mixins";
+
+.forecast-card-row {
+  .ant-list-item-main {
+    display: flex !important;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  @include breakpoint-to($mobile) {
+    .ant-list-item-extra {
+      margin: 0;
+    }
+  }
+
+  &__title {
+    font-weight: $bold;
+  }
+
+  &__temp {
+    margin: 0 1rem 0 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+}
