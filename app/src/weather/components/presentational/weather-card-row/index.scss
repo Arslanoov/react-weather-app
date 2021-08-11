@@ -30,6 +30,11 @@
     }
   }
 
+  &__clouds {
+    display: flex;
+    justify-content: center;
+  }
+
   &__temp {
     font-size: 3rem;
 
@@ -84,6 +89,17 @@
   &__actions {
     display: flex;
     flex-direction: column;
+
+    @include breakpoint-to($mobile) {
+      position: absolute;
+      top: 3rem;
+      left: 1.45rem;
+    }
+
+    @include breakpoint-to($mobile-sm) {
+      top: 2rem;
+      left: 1.5rem;
+    }
   }
 
   &__action {
@@ -91,17 +107,6 @@
     color: $black;
 
     @include pointer-on-hover();
-
-    @include breakpoint-to($mobile) {
-      position: absolute;
-      top: 3rem;
-      right: 1.45rem;
-    }
-
-    @include breakpoint-to($mobile-sm) {
-      top: 2rem;
-      right: 1.5rem;
-    }
 
     &:first-of-type {
       margin-bottom: 1rem;
@@ -111,6 +116,6 @@
   &__delete {
     position: absolute;
     top: 1rem;
-    right: 1.65rem;
+    left: 1.6rem;
   }
 }

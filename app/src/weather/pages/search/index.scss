@@ -22,10 +22,10 @@
 
   &__item {
     &.search__item_expanded {
-      width: 50%;
+      width: 70%;
 
       @include breakpoint-to($desktop-sm) {
-        width: 70%;
+        width: 85%;
       }
 
       @include breakpoint-to($mobile) {

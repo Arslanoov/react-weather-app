@@ -42,7 +42,7 @@ const CityFindForm: React.FC<Props> = ({ onSubmit }) => {
       onFinish={formik.handleSubmit}
     >
       <Tabs onTabClick={(name) => changeTab(name as SearchType)} defaultActiveKey="1" type="card" size="small">
-        <TabPane tab="By city" key="city">
+        <TabPane tab="City" key="city">
           <Form.Item
             label="Name"
             name="cityName"
@@ -57,7 +57,7 @@ const CityFindForm: React.FC<Props> = ({ onSubmit }) => {
             />
           </Form.Item>
         </TabPane>
-        <TabPane tab="By geographic coordinates" key="coordinates">
+        <TabPane tab="Coordinates" key="coordinates">
           <Form.Item
             label="Latitude"
             name="latitude"
@@ -85,7 +85,7 @@ const CityFindForm: React.FC<Props> = ({ onSubmit }) => {
             />
           </Form.Item>
         </TabPane>
-        <TabPane tab="By ZIP code" key="zip">
+        <TabPane tab="ZIP code" key="zip">
           <Form.Item
             label="ZIP code"
             name="zipCode"

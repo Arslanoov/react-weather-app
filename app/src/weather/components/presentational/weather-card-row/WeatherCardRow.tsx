@@ -35,7 +35,7 @@ const WeatherCardRow: React.FC<Props> = ({
   withActions = true,
   detailed = false,
 }) => (
-  <Card.Grid className={`weather-card-row ${className}`}>
+  <Card.Grid className={`weather-card-row ${className}`} hoverable={false}>
     {
       canDelete
       && onDelete
