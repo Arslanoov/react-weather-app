@@ -19,11 +19,15 @@ const initialState: WeatherState = {
   fetchError: null,
 };
 
-// eslint-disable-next-line max-len
-export const fetchCityWeather = createAsyncThunk('weather/fetchCurrentWeather', async (city: string) => await fetchCurrentWeatherByCity(city));
+export const fetchCityWeather = createAsyncThunk(
+  'weather/fetchCurrentWeather',
+  async (city: string) => await fetchCurrentWeatherByCity(city),
+);
 
-// eslint-disable-next-line max-len
-export const fetchDailyForecast = createAsyncThunk('weather/fetchDailyForecast', async (city: string) => await fetchDailyForecastByCity(city));
+export const fetchDailyForecast = createAsyncThunk(
+  'weather/fetchDailyForecast',
+  async (city: string) => await fetchDailyForecastByCity(city),
+);
 
 export const weatherSlice = createSlice({
   name: 'weather',
