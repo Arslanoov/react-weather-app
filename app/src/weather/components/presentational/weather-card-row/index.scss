@@ -33,6 +33,10 @@
   &__temp {
     font-size: 3rem;
 
+    @include breakpoint-to($mobile) {
+      margin-top: 1rem;
+    }
+
     &-minmax {
       font-size: 1.5rem;
     }
@@ -45,6 +49,10 @@
   &__sun {
     display: flex;
     align-items: center;
+
+    @include breakpoint-to($mobile) {
+      margin-top: 1rem;
+    }
 
     &rise {
       margin-right: 1rem;
@@ -59,6 +67,12 @@
 
     &-icon {
       width: 4rem;
+    }
+  }
+
+  &__humidity {
+    @include breakpoint-to($mobile) {
+      margin-top: 1rem;
     }
   }
 
@@ -78,6 +92,17 @@
 
     @include pointer-on-hover();
 
+    @include breakpoint-to($mobile) {
+      position: absolute;
+      top: 3rem;
+      right: 1.45rem;
+    }
+
+    @include breakpoint-to($mobile-sm) {
+      top: 2rem;
+      right: 1.5rem;
+    }
+
     &:first-of-type {
       margin-bottom: 1rem;
     }
@@ -86,6 +111,6 @@
   &__delete {
     position: absolute;
     top: 1rem;
-    right: 1rem;
+    right: 1.65rem;
   }
 }

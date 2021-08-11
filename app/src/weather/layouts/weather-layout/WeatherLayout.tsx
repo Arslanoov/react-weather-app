@@ -16,7 +16,7 @@ type Props = ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchT
 
 const WeatherLayout: React.FC<Props> = ({ toggleSidebar, isSidebarCollapsed, children }) => (
   <Layout className="weather-layout">
-    <Sidebar isCollapsed={isSidebarCollapsed} />
+    <Sidebar onClose={toggleSidebar} isCollapsed={isSidebarCollapsed} />
     <Layout>
       <Header toggleSidebar={toggleSidebar} />
       <Layout.Content
