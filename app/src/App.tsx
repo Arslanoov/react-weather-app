@@ -9,6 +9,8 @@ import {
 import 'antd/dist/antd.css';
 import './assets/styles/main.scss';
 
+import WeatherLayout from 'weather/layouts/weather-layout/WeatherLayout';
+
 const Home = React.lazy(() => import('./weather/pages/home'));
 const Search = React.lazy(() => import('./weather/pages/search'));
 const Weather = React.lazy(() => import('./weather/pages/weather'));
@@ -16,7 +18,7 @@ const NotFound = React.lazy(() => import('./weather/pages/not-found'));
 
 const App = () => (
   <Router>
-    <Suspense fallback={<></>}>
+    <Suspense fallback={<WeatherLayout />}>
       <Switch>
         <Route
           path="/"
