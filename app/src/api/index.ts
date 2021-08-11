@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { getSetting } from 'storage/settings';
 import withInterceptors from './withInterceptors';
 
 const api = axios.create({
@@ -6,7 +7,7 @@ const api = axios.create({
   withCredentials: true,
   params: {
     appid: process.env.REACT_APP_API_TOKEN,
-    units: 'metric',
+    units: getSetting('metric'),
   },
 });
 

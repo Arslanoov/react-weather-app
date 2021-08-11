@@ -14,6 +14,7 @@ import WeatherLayout from 'weather/layouts/weather-layout/WeatherLayout';
 const Home = React.lazy(() => import('./weather/pages/home'));
 const Search = React.lazy(() => import('./weather/pages/search'));
 const Weather = React.lazy(() => import('./weather/pages/weather'));
+const Settings = React.lazy(() => import('./weather/pages/settings'));
 const NotFound = React.lazy(() => import('./weather/pages/not-found'));
 
 const App = () => (
@@ -28,6 +29,11 @@ const App = () => (
         <Route
           path="/search"
           component={Search}
+          exact
+        />
+        <Route
+          path="/settings"
+          component={Settings}
           exact
         />
         <Route

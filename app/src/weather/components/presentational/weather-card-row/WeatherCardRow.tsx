@@ -7,6 +7,7 @@ import { CloseOutlined, PlusOutlined, AppstoreOutlined } from '@ant-design/icons
 import { CurrentWeather } from 'interfaces/weather';
 
 import { getSunrise, getSunset } from 'helpers/time';
+import { getDegMetric, getSpeedMetric } from 'helpers/metric';
 
 import WeatherIcon from 'weather/components/presentational/weather-icon';
 
@@ -56,14 +57,15 @@ const WeatherCardRow: React.FC<Props> = ({
           {' '}
           {Math.floor(data.main.feels_like)}
           {' '}
-          C&deg;
+          {getDegMetric()}
+          &deg;
         </p>
         <p>
           Wind
           {' '}
           {data.wind.speed}
           {' '}
-          m/s
+          {getSpeedMetric()}
         </p>
       </div>
       <div className="weather-card-row__temp">
