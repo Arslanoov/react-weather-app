@@ -5,7 +5,11 @@
   display: flex;
   align-items: center;
   position: relative;
-  width: 100%;
+
+  &,
+  &.ant-card-grid {
+    width: 100%;
+  }
 
   &__icon {
     margin-right: 2rem;
@@ -110,6 +114,11 @@
 
     &:first-of-type {
       margin-bottom: 1rem;
+    }
+
+    &_light {
+      /* TODO: Remove important (dark theme) */
+      color: $white !important;
     }
   }
 
