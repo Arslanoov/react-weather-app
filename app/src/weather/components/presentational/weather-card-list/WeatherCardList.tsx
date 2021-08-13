@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card } from 'antd';
+import { Card, Empty } from 'antd';
 
 import { CurrentWeather } from 'interfaces/weather';
 
@@ -22,6 +22,7 @@ const WeatherCardList: React.FC<WeatherCardListProps> = ({ items, onItemDelete }
         data={item}
       />
     ))}
+    {items.length === 0 ? <Empty /> : ''}
   </Card>
 );
 

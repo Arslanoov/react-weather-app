@@ -9,11 +9,13 @@ import { fetchCurrentWeatherByCity } from 'weather/api/city';
 
 interface SavedCitiesState {
   isEditMode: boolean,
+  loading: boolean,
   savedWeather: CurrentWeather[],
 }
 
 const initialState: SavedCitiesState = {
   isEditMode: false,
+  loading: false,
   savedWeather: [],
 };
 
@@ -42,8 +44,12 @@ export const savedCitiesSlice = createSlice({
     },
   },
   extraReducers: {
+    [fetchSavedCitiesWeather.pending.type]: (state: SavedCitiesState) => {
+      state.loading = true;
+    },
     [fetchSavedCitiesWeather.fulfilled.type]: (state: SavedCitiesState, action: PayloadAction<CurrentWeather[]>) => {
       state.savedWeather = action.payload;
+      state.loading = false;
     },
     [addSavedCity.fulfilled.type]: (state: SavedCitiesState, action: PayloadAction<CurrentWeather>) => {
       state.savedWeather.push(action.payload);
@@ -55,6 +61,7 @@ export const savedCitiesSlice = createSlice({
 });
 
 export const isEditModeSelector = (state: RootState) => state.savedCities.isEditMode;
+export const savedWeatherLoadingSelector = (state: RootState) => state.savedCities.loading;
 export const savedWeatherSelector = (state: RootState) => state.savedCities.savedWeather;
 
 export const { toggleEditMode } = savedCitiesSlice.actions;
