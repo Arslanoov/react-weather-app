@@ -2,7 +2,8 @@
 @import "assets/styles/abstracts/mixins";
 
 .weather-layout {
-  min-height: 100vh;
+  /* TODO: Remove styles (dark theme) */
+  min-height: 100vh !important;
 
   &__content {
     position: relative;

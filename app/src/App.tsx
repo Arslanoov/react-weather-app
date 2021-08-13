@@ -6,8 +6,12 @@ import {
   Redirect,
 } from 'react-router-dom';
 
-import 'antd/dist/antd.css';
+import 'antd/dist/antd.min.css';
 import './assets/styles/main.scss';
+
+import { ThemeSwitcherProvider } from 'react-css-theme-switcher';
+
+import { getSetting } from 'storage/settings';
 
 import WeatherLayout from 'weather/layouts/weather-layout/WeatherLayout';
 
@@ -17,44 +21,51 @@ const Weather = React.lazy(() => import('./weather/pages/weather'));
 const Settings = React.lazy(() => import('./weather/pages/settings'));
 const NotFound = React.lazy(() => import('./weather/pages/not-found'));
 
+const themes = {
+  dark: 'styles/antd.dark.min.css',
+  light: 'styles/antd.min.css',
+};
+
 const App = () => (
-  <Router>
-    <Suspense fallback={<WeatherLayout />}>
-      <Switch>
-        <Route
-          path="/"
-          component={Home}
-          exact
-        />
-        <Route
-          path="/search"
-          component={Search}
-          exact
-        />
-        <Route
-          path="/settings"
-          component={Settings}
-          exact
-        />
-        <Route
-          path="/weather/:city"
-          render={({ match }) => {
-            const { city } = match.params;
-            return <Weather city={city} />;
-          }}
-          exact
-        />
-        <Route
-          path="/not-found"
-          component={NotFound}
-          exact
-        />
-        <Route>
-          <Redirect to="/not-found" />
-        </Route>
-      </Switch>
-    </Suspense>
-  </Router>
+  <ThemeSwitcherProvider
+    themeMap={themes}
+    defaultTheme={getSetting('night_mode')}
+  >
+    <Router>
+      <Suspense fallback={<WeatherLayout />}>
+        <Switch>
+          <Route
+            path="/"
+            component={Home}
+            exact
+          />
+          <Route
+            path="/search"
+            component={Search}
+            exact
+          />
+          <Route
+            path="/settings"
+            component={Settings}
+            exact
+          />
+          <Route
+            path="/weather/:city"
+            component={Weather}
+            exact
+          />
+          <Route
+            path="/not-found"
+            component={NotFound}
+            exact
+          />
+          <Route>
+            <Redirect to="/not-found" />
+          </Route>
+        </Switch>
+      </Suspense>
+    </Router>
+  </ThemeSwitcherProvider>
 );
 
 export default App;

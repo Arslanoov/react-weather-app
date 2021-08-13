@@ -11,12 +11,14 @@ interface WeatherState {
   currentWeather: CurrentWeather | null,
   forecast: Forecast | null,
   fetchError: string | null,
+  loading: boolean,
 }
 
 const initialState: WeatherState = {
   currentWeather: null,
   forecast: null,
   fetchError: null,
+  loading: false,
 };
 
 export const fetchCityWeather = createAsyncThunk(
@@ -38,8 +40,13 @@ export const weatherSlice = createSlice({
     },
   },
   extraReducers: {
+    [fetchCityWeather.pending.type]: (state: WeatherState) => {
+      state.loading = true;
+      state.currentWeather = null;
+    },
     [fetchCityWeather.fulfilled.type]: (state: WeatherState, action: PayloadAction<CurrentWeather>) => {
       state.currentWeather = action.payload;
+      state.loading = false;
     },
     [fetchCityWeather.rejected.type]: (state: WeatherState, response: { error: ApiError }) => {
       state.fetchError = response.error.message;
@@ -59,6 +66,7 @@ export const weatherSlice = createSlice({
 export const currentWeatherSelector = (state: RootState) => state.weather.currentWeather;
 export const forecastSelector = (state: RootState) => state.weather.forecast;
 export const fetchErrorSelector = (state: RootState) => state.weather.fetchError;
+export const fetchLoadingSelector = (state: RootState) => state.weather.loading;
 
 export const { clearFetchError } = weatherSlice.actions;
 
