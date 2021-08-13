@@ -2,7 +2,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { AppDispatch, RootState } from 'store';
-import { searchCity, searchErrorSelector, searchItemSelector } from 'store/slices/search';
+import {
+  searchCity,
+  searchErrorSelector,
+  searchItemSelector,
+  searchLoadingSelector,
+} from 'store/slices/search';
 import { addSavedCity } from 'store/slices/savedCities';
 
 import { SearchForm } from 'interfaces/forms/searchForm';
@@ -14,11 +19,16 @@ import WeatherCardRow from 'weather/components/presentational/weather-card-row';
 import Error from 'weather/components/presentational/error';
 
 import './index.scss';
+import Loader from 'weather/components/presentational/loader';
 
 type Props = ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps> & {};
 
 const Search: React.FC<Props> = ({
-  searchItem, search, error, add,
+  searchItem,
+  search,
+  error,
+  add,
+  loading,
 }) => (
   <WeatherLayout>
     <div className="search">
@@ -26,6 +36,7 @@ const Search: React.FC<Props> = ({
         <h2 className="search__title">Search</h2>
         <CityFindForm onSubmit={(form, type) => search(form, type)} />
         <div className="search__result">
+          {loading && !error && <Loader />}
           {searchItem && (
             <WeatherCardRow
               className="search__item search__item_expanded"
@@ -46,6 +57,7 @@ const Search: React.FC<Props> = ({
 const mapStateToProps = (state: RootState) => ({
   searchItem: searchItemSelector(state),
   error: searchErrorSelector(state),
+  loading: searchLoadingSelector(state),
 });
 
 const mapDispatchToProps = (dispatch: AppDispatch) => ({

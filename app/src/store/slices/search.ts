@@ -15,11 +15,13 @@ import ApiError from 'errors/api';
 interface SearchState {
   searchItem: CurrentWeather | null,
   error: string | null,
+  loading: boolean,
 }
 
 const initialState: SearchState = {
   searchItem: null,
   error: null,
+  loading: false,
 };
 
 export const searchCity = createAsyncThunk('search/searchCity', async (payload: {
@@ -46,9 +48,15 @@ export const searchSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: {
+    [searchCity.pending.type]: (state: SearchState) => {
+      state.searchItem = null;
+      state.error = null;
+      state.loading = true;
+    },
     [searchCity.fulfilled.type]: (state: SearchState, action: PayloadAction<CurrentWeather>) => {
       state.searchItem = action.payload;
       state.error = null;
+      state.loading = false;
     },
     [searchCity.rejected.type]: (state: SearchState, response: { error: ApiError }) => {
       state.searchItem = null;
@@ -59,3 +67,4 @@ export const searchSlice = createSlice({
 
 export const searchItemSelector = (state: RootState) => state.search.searchItem;
 export const searchErrorSelector = (state: RootState) => state.search.error;
+export const searchLoadingSelector = (state: RootState) => state.search.loading;

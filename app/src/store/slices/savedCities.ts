@@ -45,6 +45,7 @@ export const savedCitiesSlice = createSlice({
   },
   extraReducers: {
     [fetchSavedCitiesWeather.pending.type]: (state: SavedCitiesState) => {
+      state.savedWeather = [];
       state.loading = true;
     },
     [fetchSavedCitiesWeather.fulfilled.type]: (state: SavedCitiesState, action: PayloadAction<CurrentWeather[]>) => {
