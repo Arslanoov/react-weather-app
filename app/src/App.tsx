@@ -51,10 +51,7 @@ const App = () => (
           />
           <Route
             path="/weather/:city"
-            render={({ match }) => {
-              const { city } = match.params;
-              return <Weather city={city} />;
-            }}
+            component={Weather}
             exact
           />
           <Route
