@@ -140,20 +140,22 @@ const WeatherCardRow: React.FC<Props> = ({
           )}
           {withActions && (
             <div className="weather-card-row__actions">
-              {
-                extended
-                && canAdd
-                && onAdd
-                && (
-                <PlusOutlined
-                  onClick={() => onAdd(data.name)}
-                  className={
-                    `weather-card-row__action ${currentTheme === 'dark' ? 'weather-card-row__action_light' : ''}`
-                  }
-                />
-                )
-              }
-              <NavLink to={`/weather/${data.name}`}>
+              <div className="weather-card-row__action-wrapper">
+                {
+                  extended
+                  && canAdd
+                  && onAdd
+                  && (
+                  <PlusOutlined
+                    onClick={() => onAdd(data.name)}
+                    className={
+                      `weather-card-row__action ${currentTheme === 'dark' ? 'weather-card-row__action_light' : ''}`
+                    }
+                  />
+                  )
+                }
+              </div>
+              <NavLink className="weather-card-row__action-wrapper" to={`/weather/${data.name}`}>
                 <AppstoreOutlined
                   className={
                     `weather-card-row__action ${currentTheme === 'dark' ? 'weather-card-row__action_light' : ''}`

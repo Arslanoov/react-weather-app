@@ -20,6 +20,7 @@ const WeatherCardList: React.FC<WeatherCardListProps> = ({ items, onItemDelete }
         key={item.id}
         onDelete={onItemDelete}
         data={item}
+        withActions
       />
     ))}
     {items.length === 0 ? <Empty /> : ''}
