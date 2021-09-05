@@ -6,6 +6,11 @@ import { isCollapsedSidebarSelector, toggleSidebar as toggleSidebarAction } from
 
 import { Layout } from 'antd';
 
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.min.css';
+
+import { useThemeSwitcher } from 'react-css-theme-switcher';
+
 import Header from 'weather/layouts/header';
 import Footer from 'weather/layouts/footer';
 import Sidebar from 'weather/layouts/sidebar';
@@ -14,20 +19,33 @@ import './index.scss';
 
 type Props = ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps> & {};
 
-const WeatherLayout: React.FC<Props> = ({ toggleSidebar, isSidebarCollapsed, children }) => (
-  <Layout className="weather-layout">
-    <Sidebar isCollapsed={isSidebarCollapsed} />
-    <Layout>
-      <Header toggleSidebar={toggleSidebar} />
-      <Layout.Content
-        className={`weather-layout__content ${isSidebarCollapsed ? '' : 'weather-layout__content_collapsed'}`}
-      >
-        {children}
-      </Layout.Content>
-      <Footer />
+const WeatherLayout: React.FC<Props> = ({
+  toggleSidebar,
+  isSidebarCollapsed,
+  children,
+}) => {
+  const { currentTheme } = useThemeSwitcher();
+
+  return (
+    <Layout className="weather-layout">
+      <Sidebar isCollapsed={isSidebarCollapsed} />
+      <Layout>
+        <Header toggleSidebar={toggleSidebar} />
+        <Layout.Content
+          className={`weather-layout__content ${isSidebarCollapsed ? '' : 'weather-layout__content_collapsed'}`}
+        >
+          {children}
+        </Layout.Content>
+        <Footer />
+      </Layout>
+      <ToastContainer
+        theme={currentTheme === 'light' ? 'light' : 'dark'}
+        closeOnClick
+        newestOnTop
+      />
     </Layout>
-  </Layout>
-);
+  );
+};
 
 const mapStateToProps = (state: RootState) => ({
   isSidebarCollapsed: isCollapsedSidebarSelector(state),

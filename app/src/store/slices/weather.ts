@@ -56,6 +56,7 @@ export const weatherSlice = createSlice({
     [fetchDailyForecast.fulfilled.type]: (state: WeatherState, action: PayloadAction<Forecast>) => {
       state.forecast = {
         ...action.payload,
+        // TODO: Fix hours check
         list: action.payload.list.filter(
           (item) => HOURS_TO_INCLUDE.includes(Number((new Date(item.dt_txt)).getHours())),
         ),
