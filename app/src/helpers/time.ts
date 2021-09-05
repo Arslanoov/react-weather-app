@@ -16,7 +16,4 @@ export const datetimeToDate = (datetime: string): string => {
   return `${formatDateValue(date.getDate())}.${formatDateValue(date.getMonth())}.${date.getFullYear()}`;
 };
 
-export const datetimeToWeekday = (datetime: string): string => {
-  const date = new Date(datetime);
-  return `${daysOfTheWeek[date.getDay()]}`;
-};
+export const datetimeToWeekday = (datetime: string): string => daysOfTheWeek[(new Date(datetime)).getDay()];

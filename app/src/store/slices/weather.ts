@@ -21,6 +21,8 @@ const initialState: WeatherState = {
   loading: false,
 };
 
+export const HOURS_TO_INCLUDE = [12];
+
 export const fetchCityWeather = createAsyncThunk(
   'weather/fetchCurrentWeather',
   async (city: string) => await fetchCurrentWeatherByCity(city),
@@ -54,7 +56,9 @@ export const weatherSlice = createSlice({
     [fetchDailyForecast.fulfilled.type]: (state: WeatherState, action: PayloadAction<Forecast>) => {
       state.forecast = {
         ...action.payload,
-        list: action.payload.list.filter((_, index) => index % 8 === 0),
+        list: action.payload.list.filter(
+          (item) => HOURS_TO_INCLUDE.includes(Number((new Date(item.dt_txt)).getHours())),
+        ),
       };
     },
     [fetchDailyForecast.rejected.type]: (state: WeatherState, response: { error: ApiError }) => {

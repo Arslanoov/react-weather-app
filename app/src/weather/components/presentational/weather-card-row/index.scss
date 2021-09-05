@@ -112,8 +112,10 @@
 
     @include pointer-on-hover();
 
-    &:first-of-type {
-      margin-bottom: 1rem;
+    &-wrapper {
+      &:not(:last-of-type) {
+        margin-bottom: 1rem;
+      }
     }
 
     &_light {

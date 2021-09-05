@@ -52,7 +52,7 @@ export const mapWeatherIcon = (icon: WeatherIcon): string => {
       name = 'Rain_Medium_Moon';
       break;
     case '11n':
-      name = 'Thunderstorm';
+      name = 'Thunder';
       break;
     case '13n':
       name = 'Snow_1_Moon';
