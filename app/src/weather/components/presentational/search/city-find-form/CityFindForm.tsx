@@ -41,7 +41,13 @@ const CityFindForm: React.FC<Props> = ({ onSubmit }) => {
       className="search-form"
       onFinish={formik.handleSubmit}
     >
-      <Tabs onTabClick={(name) => changeTab(name as SearchType)} defaultActiveKey="1" type="card" size="small">
+      <Tabs
+        onTabClick={(name) => changeTab(name as SearchType)}
+        defaultActiveKey="1"
+        type="card"
+        size="small"
+        centered
+      >
         <TabPane tab="City" key="city">
           <Form.Item
             label="Name"

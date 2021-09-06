@@ -9,17 +9,29 @@ import {
   savedWeatherSelector,
 } from 'store/slices/savedCities';
 
+import { toast } from 'react-toastify';
+
 import WeatherCardList from 'weather/components/presentational/weather-card-list';
 import Loader from 'weather/components/presentational/loader';
 
 type Props = ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps> & {};
 
 const SavedCitiesList: React.FC<Props> = ({
-  savedWeather, fetchList, removeCity, loading,
+  savedWeather,
+  fetchList,
+  removeCity,
+  loading,
 }) => {
   useEffect(() => {
     fetchList();
   }, []);
+
+  const onRemove = async (name: string) => {
+    await removeCity(name);
+    toast('City removed', {
+      type: 'success',
+    });
+  };
 
   if (loading) {
     return (
@@ -27,7 +39,7 @@ const SavedCitiesList: React.FC<Props> = ({
     );
   }
 
-  return <WeatherCardList onItemDelete={removeCity} items={savedWeather} />;
+  return <WeatherCardList onItemDelete={onRemove} items={savedWeather} />;
 };
 
 const mapStateToProps = (state: RootState) => ({

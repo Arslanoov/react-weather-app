@@ -5,21 +5,25 @@ export const getDegMetric = () => {
   const metric = getSetting('metric');
 
   if (metric === metrics.Imperial) {
-    return 'C';
+    return 'F';
   }
 
-  if (metric === metrics.Standart) {
+  if (metric === metrics.Standard) {
     return 'K';
   }
 
-  return 'F';
+  if (metric === metrics.Metric) {
+    return 'C';
+  }
+
+  return '';
 };
 
 export const getSpeedMetric = () => {
   const metric = getSetting('metric');
 
   if (metric === metrics.Imperial) {
-    return 'm/h';
+    return 'km/h';
   }
 
   return 'm/s';
