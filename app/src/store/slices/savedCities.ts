@@ -8,13 +8,11 @@ import { getSavedCities, removeCity, saveCity } from 'storage/weatherStorage';
 import { fetchCurrentWeatherByCity } from 'weather/api/city';
 
 interface SavedCitiesState {
-  isEditMode: boolean,
   loading: boolean,
   savedWeather: CurrentWeather[],
 }
 
 const initialState: SavedCitiesState = {
-  isEditMode: false,
   loading: false,
   savedWeather: [],
 };
@@ -38,11 +36,7 @@ export const removeSavedCity = createAsyncThunk('savedCities/removedSavedCity', 
 export const savedCitiesSlice = createSlice({
   name: 'savedCities',
   initialState,
-  reducers: {
-    toggleEditMode: (state: SavedCitiesState) => {
-      state.isEditMode = !state.isEditMode;
-    },
-  },
+  reducers: {},
   extraReducers: {
     [fetchSavedCitiesWeather.pending.type]: (state: SavedCitiesState) => {
       state.savedWeather = [];
@@ -61,10 +55,7 @@ export const savedCitiesSlice = createSlice({
   },
 });
 
-export const isEditModeSelector = (state: RootState) => state.savedCities.isEditMode;
 export const savedWeatherLoadingSelector = (state: RootState) => state.savedCities.loading;
 export const savedWeatherSelector = (state: RootState) => state.savedCities.savedWeather;
-
-export const { toggleEditMode } = savedCitiesSlice.actions;
 
 export default savedCitiesSlice.reducer;

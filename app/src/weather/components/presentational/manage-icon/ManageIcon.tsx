@@ -6,10 +6,10 @@ import './index.scss';
 
 type Props = {
   className?: string;
-  onToggle: () => void;
+  onToggle?: () => void;
 };
 
-const ManageIcon: React.FC<Props> = ({ onToggle, className = '' }) => (
+const ManageIcon: React.FC<Props> = ({ className = '', onToggle = () => {} }) => (
   <PlusOutlined role="link" className={`manage-icon ${className}`} onClick={() => onToggle()} />
 );
 
