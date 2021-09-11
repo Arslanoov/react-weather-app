@@ -25,6 +25,7 @@ type Props = {
   extended?: boolean;
   withActions?: boolean;
   detailed?: boolean;
+  isBigIcon?: boolean;
 };
 
 const WeatherCardRow: React.FC<Props> = ({
@@ -37,6 +38,7 @@ const WeatherCardRow: React.FC<Props> = ({
   extended = false,
   withActions = true,
   detailed = false,
+  isBigIcon = false,
 }) => {
   const { currentTheme } = useThemeSwitcher();
 
@@ -49,7 +51,7 @@ const WeatherCardRow: React.FC<Props> = ({
           && <CloseOutlined className="weather-card-row__delete" onClick={() => onDelete(data.name)} />
         }
         {extended}
-        <WeatherIcon className="weather-card-row__icon" icon={data.weather[0].icon} isBig={detailed} />
+        <WeatherIcon className="weather-card-row__icon" icon={data.weather[0].icon} isBig={isBigIcon || detailed} />
         <div className="weather-card-row__content">
           <div className="weather-card-row__left">
             <h3 className="weather-card-row__city">{data.name}</h3>
