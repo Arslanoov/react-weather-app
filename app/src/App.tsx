@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import React from 'react';
 import {
   BrowserRouter as Router,
   Switch,
@@ -15,13 +15,11 @@ import { getSetting } from 'storage/settings';
 
 import { themes } from 'const/themes';
 
-import WeatherLayout from 'weather/layouts/weather-layout/WeatherLayout';
-
-const Home = React.lazy(() => import('./weather/pages/home'));
-const Search = React.lazy(() => import('./weather/pages/search'));
-const Weather = React.lazy(() => import('./weather/pages/weather'));
-const Settings = React.lazy(() => import('./weather/pages/settings'));
-const NotFound = React.lazy(() => import('./weather/pages/not-found'));
+import Home from 'weather/pages/home';
+import Search from 'weather/pages/search';
+import Weather from 'weather/pages/weather';
+import Settings from 'weather/pages/settings';
+import NotFound from 'weather/pages/not-found';
 
 const App = () => (
   <ThemeSwitcherProvider
@@ -29,38 +27,36 @@ const App = () => (
     defaultTheme={getSetting('night_mode')}
   >
     <Router>
-      <Suspense fallback={<WeatherLayout />}>
-        <Switch>
-          <Route
-            path="/"
-            component={Home}
-            exact
-          />
-          <Route
-            path="/weather/:city"
-            component={Weather}
-            exact
-          />
-          <Route
-            path="/search"
-            component={Search}
-            exact
-          />
-          <Route
-            path="/settings"
-            component={Settings}
-            exact
-          />
-          <Route
-            path="/not-found"
-            component={NotFound}
-            exact
-          />
-          <Route>
-            <Redirect to="/not-found" />
-          </Route>
-        </Switch>
-      </Suspense>
+      <Switch>
+        <Route
+          path="/"
+          component={Home}
+          exact
+        />
+        <Route
+          path="/weather/:city"
+          component={Weather}
+          exact
+        />
+        <Route
+          path="/search"
+          component={Search}
+          exact
+        />
+        <Route
+          path="/settings"
+          component={Settings}
+          exact
+        />
+        <Route
+          path="/not-found"
+          component={NotFound}
+          exact
+        />
+        <Route>
+          <Redirect to="/not-found" />
+        </Route>
+      </Switch>
     </Router>
   </ThemeSwitcherProvider>
 );

@@ -1,3 +1,5 @@
+@import "assets/styles/abstracts/mixins";
+
 .weather-icon {
   display: flex;
   justify-content: center;
@@ -8,5 +10,17 @@
   &__item {
     max-width: 4rem;
     max-height: 3rem;
+
+    @include without-select();
+  }
+
+  &_big {
+    width: 8rem;
+    height: 8rem;
+
+    .weather-icon__item {
+      max-width: 6rem;
+      max-height: 5rem;
+    }
   }
 }

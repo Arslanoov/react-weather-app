@@ -10,7 +10,12 @@ const NotFound = () => (
     <div className="not-found">
       <div className="not-found__content">
         <h1 className="not-found__title">404</h1>
-        <img className="not-found__moon" src="/img/icons/weather/Moon.svg" alt="" />
+        <img
+          className="not-found__moon"
+          src="/img/icons/weather/Moon.svg"
+          draggable={false}
+          alt=""
+        />
         <NavLink className="not-found__link" to="/">Return to home page</NavLink>
       </div>
     </div>

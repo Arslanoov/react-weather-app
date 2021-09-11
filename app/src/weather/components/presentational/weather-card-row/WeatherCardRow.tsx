@@ -49,7 +49,7 @@ const WeatherCardRow: React.FC<Props> = ({
           && <CloseOutlined className="weather-card-row__delete" onClick={() => onDelete(data.name)} />
         }
         {extended}
-        <WeatherIcon className="weather-card-row__icon" icon={data.weather[0].icon} />
+        <WeatherIcon className="weather-card-row__icon" icon={data.weather[0].icon} isBig={detailed} />
         <div className="weather-card-row__content">
           <div className="weather-card-row__left">
             <h3 className="weather-card-row__city">{data.name}</h3>
@@ -108,7 +108,12 @@ const WeatherCardRow: React.FC<Props> = ({
               </div>
               <div className="weather-card-row__details-right">
                 <div className="weather-card-row__clouds">
-                  <img className="weather-card-row__cloud" src="/img/icons/weather/Cloud.svg" alt="" />
+                  <img
+                    className="weather-card-row__cloud"
+                    src="/img/icons/weather/Cloud.svg"
+                    draggable={false}
+                    alt=""
+                  />
                   {' '}
                   {data.clouds.all}
                   {' '}
@@ -129,11 +134,21 @@ const WeatherCardRow: React.FC<Props> = ({
           {extended && (
             <div className="weather-card-row__sun">
               <div className="weather-card-row__sunrise">
-                <img className="weather-card-row__sun-icon" src="/img/icons/weather/sun/sunrise.svg" alt="" />
+                <img
+                  className="weather-card-row__sun-icon"
+                  src="/img/icons/weather/sun/sunrise.svg"
+                  draggable={false}
+                  alt=""
+                />
                 {getSunrise(data)}
               </div>
               <div className="weather-card-row__sunset">
-                <img className="weather-card-row__sun-icon" src="/img/icons/weather/sun/sunset.svg" alt="" />
+                <img
+                  className="weather-card-row__sun-icon"
+                  src="/img/icons/weather/sun/sunset.svg"
+                  draggable={false}
+                  alt=""
+                />
                 {getSunset(data)}
               </div>
             </div>
