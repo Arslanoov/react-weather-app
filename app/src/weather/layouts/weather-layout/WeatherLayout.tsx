@@ -43,6 +43,8 @@ const WeatherLayout: React.FC<Props> = ({
       </Layout>
       <ToastContainer
         theme={currentTheme === 'light' ? 'light' : 'dark'}
+        autoClose={4000}
+        limit={1}
         closeOnClick
         newestOnTop
       />

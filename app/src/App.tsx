@@ -37,6 +37,11 @@ const App = () => (
             exact
           />
           <Route
+            path="/weather/:city"
+            component={Weather}
+            exact
+          />
+          <Route
             path="/search"
             component={Search}
             exact
@@ -44,11 +49,6 @@ const App = () => (
           <Route
             path="/settings"
             component={Settings}
-            exact
-          />
-          <Route
-            path="/weather/:city"
-            component={Weather}
             exact
           />
           <Route

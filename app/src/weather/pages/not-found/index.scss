@@ -25,9 +25,12 @@
 
   &__moon {
     width: 13rem;
+    margin-bottom: 2rem;
+    user-select: none;
 
     @include breakpoint-to($mobile) {
       width: 10rem;
+      margin-bottom: 1rem;
     }
 
     @include breakpoint-to($mobile-sm) {
