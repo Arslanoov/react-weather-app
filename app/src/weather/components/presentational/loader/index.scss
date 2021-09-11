@@ -1,7 +1,9 @@
+@import "assets/styles/abstracts/variables";
+
 .loader {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 10rem;
+  height: $loader-height;
   max-height: 100vh;
 }

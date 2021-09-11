@@ -14,19 +14,20 @@
   }
 
   &__title {
-    font-size: 3rem;
-    font-weight: $bold;
+    font-size: $not-found-title-font-size;
+    font-weight: $not-found-title-font-weight;
   }
 
   &__link {
-    font-size: 1.2rem;
-    color: $black;
+    font-size: $not-found-link-font-size;
+    color: $not-found-link-color;
   }
 
   &__moon {
     width: 13rem;
     margin-bottom: 2rem;
-    user-select: none;
+
+    @include without-select();
 
     @include breakpoint-to($mobile) {
       width: 10rem;

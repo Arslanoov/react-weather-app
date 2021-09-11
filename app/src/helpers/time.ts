@@ -10,7 +10,6 @@ export const getSunset = (data: CurrentWeather) => getTime(data.sys.sunset, data
 
 export const formatDateValue = (value: number): string => (value < 10 ? `0${value}` : `${value}`);
 
-// TODO: Add tests
 export const datetimeToDate = (datetime: string): string => {
   const date = new Date(datetime);
   return `${formatDateValue(date.getDate())}.${formatDateValue(date.getMonth())}.${date.getFullYear()}`;
