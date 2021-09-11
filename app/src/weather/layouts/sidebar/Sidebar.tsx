@@ -14,7 +14,12 @@ const Sidebar: React.FC<Props> = ({ isCollapsed }) => {
   const location = useLocation();
 
   return (
-    <Layout.Sider className="sidebar" trigger={null} collapsedWidth={0} collapsed={isCollapsed} collapsible>
+    <Layout.Sider
+      trigger={null}
+      collapsedWidth={0}
+      collapsed={isCollapsed}
+      collapsible
+    >
       <div className="sidebar__logo" />
       <Menu className="sidebar__menu" theme="dark" mode="inline" defaultSelectedKeys={[location.pathname]}>
         <Menu.Item key="/" icon={<AppstoreOutlined />}>

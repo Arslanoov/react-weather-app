@@ -27,10 +27,10 @@
   }
 
   &__city {
-    font-size: 1.2rem;
+    font-size: $weather-card-row-city-font-size;
 
     @include breakpoint-to($mobile) {
-      font-weight: $bold;
+      font-weight: $weather-card-row-city-font-weight;
     }
   }
 
@@ -40,14 +40,14 @@
   }
 
   &__temp {
-    font-size: 3rem;
+    font-size: $weather-card-row-temp-font-size;
 
     @include breakpoint-to($mobile) {
       margin-top: 1rem;
     }
 
     &-minmax {
-      font-size: 1.5rem;
+      font-size: $weather-card-row-minmax-font-size;
     }
   }
 
@@ -107,8 +107,8 @@
   }
 
   &__action {
-    font-size: 1.2rem;
-    color: $black;
+    font-size: $weather-card-row-action-font-size;
+    color: $weather-card-row-action-color;
 
     @include pointer-on-hover();
 
@@ -119,8 +119,7 @@
     }
 
     &_light {
-      /* TODO: Remove important (dark theme) */
-      color: $white !important;
+      color: $weather-card-row-action-light-color !important;
     }
   }
 

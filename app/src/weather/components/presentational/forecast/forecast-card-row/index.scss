@@ -20,7 +20,7 @@
 
   &__temp {
     margin: 0 1rem 0 0;
-    font-size: 1.5rem;
-    font-weight: 700;
+    font-size: $forecast-card-row-temp-font-size;
+    font-weight: $forecast-card-row-temp-font-weight;
   }
 }

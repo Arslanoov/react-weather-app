@@ -1,5 +1,7 @@
+// Common
 $white: #fff;
 $black: #000;
+$red: #de1818;
 
 $bold: 700;
 
@@ -7,5 +9,43 @@ $desktop-sm: 80rem;
 $mobile: 35rem;
 $mobile-sm: 21rem;
 
+// Header
 $header-background: $white;
+$header-trigger-font-size: 1rem;
+$header-trigger-transitions: color 0.3s;
+$header-trigger-hover-color: #1890ff;
+
+// Footer
 $footer-background: #ececec;
+
+// Saved cities manage
+$saved-cities-manage-color: $black;
+
+// Error
+$error-color: $red;
+
+// Forecast card row
+$forecast-card-row-temp-font-size: 1.5rem;
+$forecast-card-row-temp-font-weight: $bold;
+
+// Loader height
+$loader-height: 10rem;
+
+// Manage icon
+$manage-icon-font-size: 1.5rem;
+
+// Weather card row
+$weather-card-row-city-font-size: 1.2rem;
+$weather-card-row-city-font-weight: $bold;
+$weather-card-row-temp-font-size: 3rem;
+$weather-card-row-minmax-font-size: 1.5rem;
+$weather-card-row-action-font-size: 1.2rem;
+$weather-card-row-action-color: $black;
+$weather-card-row-action-light-color: $white;
+
+/// Pages
+// Not found
+$not-found-title-font-size: 3rem;
+$not-found-title-font-weight: $bold;
+$not-found-link-font-size: 1.2rem;
+$not-found-link-color: $black;

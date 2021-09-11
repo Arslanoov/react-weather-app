@@ -1,5 +1,3 @@
-// TODO: Split types and interfaces
-
 export type WeatherType = |
 'Thunderstorm' |
 'Drizzle' |

@@ -1,5 +1,7 @@
 import axios from 'axios';
+
 import { getSetting } from 'storage/settings';
+
 import withInterceptors from './withInterceptors';
 
 const api = axios.create({

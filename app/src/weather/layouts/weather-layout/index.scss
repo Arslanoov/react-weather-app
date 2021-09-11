@@ -2,7 +2,6 @@
 @import "assets/styles/abstracts/mixins";
 
 .weather-layout {
-  /* TODO: Remove styles (dark theme) */
   min-height: 100vh !important;
 
   &__content {
@@ -10,10 +9,13 @@
     min-height: 12rem;
     padding: .625rem 1.25rem;
     transition: opacity .5s;
+  }
 
+  &__content,
+  &__footer {
     &_collapsed {
       @include breakpoint-to($mobile) {
-        opacity: 0;
+        display: none;
       }
     }
   }

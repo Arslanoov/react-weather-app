@@ -2,7 +2,7 @@
 @import "assets/styles/abstracts/mixins";
 
 .manage-icon {
-  font-size: 1.5rem;
+  font-size: $manage-icon-font-size;
 
   @include pointer-on-hover();
 }

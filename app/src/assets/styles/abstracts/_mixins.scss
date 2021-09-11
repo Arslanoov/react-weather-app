@@ -4,6 +4,10 @@
   }
 }
 
+@mixin without-select() {
+  user-select: none;
+}
+
 @mixin breakpoint-from($breakpoint) {
   @media screen and (min-width: $breakpoint) {
     @content;

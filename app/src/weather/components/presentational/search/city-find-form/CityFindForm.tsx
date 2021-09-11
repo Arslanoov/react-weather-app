@@ -45,7 +45,6 @@ const CityFindForm: React.FC<Props> = ({ onSubmit }) => {
         onTabClick={(name) => changeTab(name as SearchType)}
         defaultActiveKey="1"
         type="card"
-        size="small"
         centered
       >
         <TabPane tab="City" key="city">
