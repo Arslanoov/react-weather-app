@@ -8,14 +8,15 @@ import { MenuUnfoldOutlined } from '@ant-design/icons';
 import './index.scss';
 
 type Props = {
+  className: string;
   toggleSidebar: () => void;
 };
 
-const Header: React.FC<Props> = ({ toggleSidebar }) => {
+const Header: React.FC<Props> = ({ className, toggleSidebar }) => {
   const { currentTheme } = useThemeSwitcher();
 
   return (
-    <Layout.Header className={`header ${currentTheme === 'light' ? 'header__light' : ''}`}>
+    <Layout.Header className={`header ${className} ${currentTheme === 'light' ? 'header__light' : ''}`}>
       <MenuUnfoldOutlined className="header__trigger" onClick={() => toggleSidebar()} />
       <h1 className="header__title">Weather App</h1>
     </Layout.Header>

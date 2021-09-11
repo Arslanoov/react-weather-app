@@ -30,13 +30,16 @@ const WeatherLayout: React.FC<Props> = ({
     <Layout className="weather-layout">
       <Sidebar isCollapsed={isSidebarCollapsed} />
       <Layout>
-        <Header toggleSidebar={toggleSidebar} />
+        <Header
+          className="weather-layout__header"
+          toggleSidebar={toggleSidebar}
+        />
         <Layout.Content
           className={`weather-layout__content ${isSidebarCollapsed ? '' : 'weather-layout__content_collapsed'}`}
         >
           {children}
         </Layout.Content>
-        <Footer />
+        <Footer className={`weather-layout__footer ${isSidebarCollapsed ? '' : 'weather-layout__footer_collapsed'}`} />
       </Layout>
       <ToastContainer
         theme={currentTheme === 'light' ? 'light' : 'dark'}

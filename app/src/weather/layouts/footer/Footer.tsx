@@ -4,11 +4,15 @@ import { Layout } from 'antd';
 
 import './index.scss';
 
-const Footer = () => {
+type Props = {
+  className: string;
+};
+
+const Footer: React.FC<Props> = ({ className }) => {
   const currentDate = new Date();
 
   return (
-    <Layout.Footer className="footer">
+    <Layout.Footer className={`footer ${className}`}>
       <div className="footer__app">
         Weather App ©
         {' '}
