@@ -1,9 +1,0 @@
-@import "assets/styles/abstracts/variables";
-
-.error {
-  color: $error-color;
-
-  &::first-letter {
-    text-transform: capitalize;
-  }
-}

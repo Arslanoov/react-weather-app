@@ -39,7 +39,7 @@ const SavedCitiesList: React.FC<Props> = ({
     );
   }
 
-  return <WeatherCardList onItemDelete={onRemove} items={savedWeather} />;
+  return <WeatherCardList onItemDelete={onRemove} items={savedWeather} isBigIcon />;
 };
 
 const mapStateToProps = (state: RootState) => ({

@@ -9,9 +9,9 @@ import {
 import { useFormik } from 'formik';
 
 import { SearchForm } from 'interfaces/forms/searchForm';
+import { SearchType } from 'interfaces/search';
 
 import './index.scss';
-import { SearchType } from 'interfaces/search';
 
 const { TabPane } = Tabs;
 
