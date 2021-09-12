@@ -12,7 +12,7 @@ export const formatDateValue = (value: number): string => (value < 10 ? `0${valu
 
 export const datetimeToDate = (datetime: string): string => {
   const date = new Date(datetime);
-  return `${formatDateValue(date.getDate())}.${formatDateValue(date.getMonth())}.${date.getFullYear()}`;
+  return `${formatDateValue(date.getDate())}.${formatDateValue(date.getMonth() + 1)}.${date.getFullYear()}`;
 };
 
 export const datetimeToWeekday = (datetime: string): string => daysOfTheWeek[(new Date(datetime)).getDay()];
