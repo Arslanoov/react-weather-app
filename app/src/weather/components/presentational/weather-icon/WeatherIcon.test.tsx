@@ -1,8 +1,9 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 
-import WeatherIcon from 'weather/components/presentational/weather-icon/WeatherIcon';
 import { mapWeatherIcon } from 'helpers/mapper/weatherIconMapper';
+
+import WeatherIcon from './WeatherIcon';
 
 describe('<WeatherIcon />', () => {
   it('renders correctly', () => {
