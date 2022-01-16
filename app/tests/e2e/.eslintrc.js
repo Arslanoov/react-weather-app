@@ -1,10 +1,10 @@
 module.exports = {
-  plugins: ["cypress"],
+  plugins: ['cypress'],
   env: {
-    "cypress/globals": true
+    'cypress/globals': true
   },
   rules: {
-    strict: "off"
+    strict: 'off'
   },
   ignorePatterns: [
     '.eslintrc.js',
